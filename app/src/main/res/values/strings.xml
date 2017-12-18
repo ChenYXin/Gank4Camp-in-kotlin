@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gank4Camp-in-kotlin</string>
+    <!--SplashActivity-->
+    <string name="splash_activity_splash_instruction">Gank4Camp</string>
+    <!--MainActivity-->
+    <string name="main_activity_item_all">Gank4Camp</string>
+</resources>
