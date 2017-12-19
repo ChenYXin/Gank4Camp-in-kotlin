@@ -1,7 +1,7 @@
 package com.donkor.gank4camp.ui.fragment
 
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.ui.base.BaseFragment
+import com.donkor.gank4camp.ui.commom.BaseFragment
 
 
 /**

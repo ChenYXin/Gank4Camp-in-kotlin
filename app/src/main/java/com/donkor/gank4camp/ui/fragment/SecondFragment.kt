@@ -1,4 +1,4 @@
-package com.donkor.gank4camp.ui.base
+package com.donkor.gank4camp.ui.commom
 
 import com.donkor.gank4camp.R
 

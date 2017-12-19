@@ -6,20 +6,16 @@ import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.switchActivity
-import com.donkor.gank4camp.ui.base.SecondFragment
+import com.donkor.gank4camp.ui.commom.SecondFragment
 import com.donkor.gank4camp.ui.fragment.FirstFragment
 import com.donkor.gank4camp.ui.fragment.ThreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 /**
- * Created by donkor on 2017/12/18.
- */
-/**
  * 主页面
+ * Created by donkor on 2017/12/18.
  */
 private val TAG: String? = "MainActivity"
 

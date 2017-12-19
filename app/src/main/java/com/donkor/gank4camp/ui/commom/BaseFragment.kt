@@ -1,4 +1,4 @@
-package com.donkor.gank4camp.ui.base
+package com.donkor.gank4camp.ui.commom
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
