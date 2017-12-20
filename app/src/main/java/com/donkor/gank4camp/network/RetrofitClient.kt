@@ -22,8 +22,8 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
     private var cache: Cache? = null
     private var okHttpClient: OkHttpClient? = null
     private var retrofit: Retrofit? = null
-    val DEFAULT_TIMEOUT: Long = 20
-    val url = baseUrl
+    private val DEFAULT_TIMEOUT: Long = 20
+    private val url = baseUrl
 
     init {
         if (httpCacheDirectory == null) {
