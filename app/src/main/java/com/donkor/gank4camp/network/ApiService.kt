@@ -1,6 +1,6 @@
 package com.donkor.gank4camp.network
 
-import com.donkor.gank4camp.mvp.model.bean.AllBean
+import com.donkor.gank4camp.mvp.model.bean.CommonBean
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,11 +14,14 @@ interface ApiService {
             get() = "http://gank.io/api/data/"
     }
 
-    //获取所有第一页数据
+    //    //获取所有第一页数据
+//    @GET("all/{count}/1")
+//    fun getAllData(@Path("count") count: String?): Observable<CommonBean>
+//获取所有第一页数据
     @GET("all/{count}/1")
-    fun getAllData(@Path("count") count: String?): Observable<AllBean>
+    fun getAllData(@Path("count") count: String?):Observable<CommonBean>?
 
     //获取所有第一页之后的数据
     @GET("all/{count}/{page}")
-    fun getAllMoreData(@Path("count")count: String?, @Path("page")page: String?): Observable<AllBean>
+    fun getAllMoreData(@Path("count") count: String?, @Path("page") page: String?): Observable<CommonBean>
 }

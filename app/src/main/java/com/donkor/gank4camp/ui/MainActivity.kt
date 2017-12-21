@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.ui.commom.SecondFragment
+import com.donkor.gank4camp.ui.fragment.AllFragment
 import com.donkor.gank4camp.ui.fragment.FirstFragment
 import com.donkor.gank4camp.ui.fragment.ThreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 private val TAG: String? = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
-    private var firstFragment: FirstFragment? = null
+    private var allFragment: AllFragment? = null
     private var secondFragment: SecondFragment? = null
     private var threeFragment: ThreeFragment? = null
 
@@ -49,8 +50,8 @@ class MainActivity : AppCompatActivity() {
             //异常情况
             val mFragments: List<Fragment> = supportFragmentManager.fragments
             for (item in mFragments) {
-                if (item is FirstFragment) {
-                    firstFragment = item
+                if (item is AllFragment) {
+                    allFragment = item
                 }
                 if (item is SecondFragment) {
                     secondFragment = item
@@ -60,16 +61,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } else {
-            firstFragment = FirstFragment()
+            allFragment = AllFragment()
             secondFragment = SecondFragment()
             threeFragment = ThreeFragment()
             val fragmentTrans = supportFragmentManager.beginTransaction()
-            fragmentTrans.add(R.id.fl_content, firstFragment)
+            fragmentTrans.add(R.id.fl_content, allFragment)
             fragmentTrans.add(R.id.fl_content, secondFragment)
             fragmentTrans.add(R.id.fl_content, threeFragment)
             fragmentTrans.commit()
         }
-        supportFragmentManager.beginTransaction().show(firstFragment)
+        supportFragmentManager.beginTransaction().show(allFragment)
                 .hide(secondFragment)
                 .hide(threeFragment)
                 .commit()
@@ -97,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_item1 -> {
                     tv_bar_title.text = "Item1"
-                    supportFragmentManager.beginTransaction().show(firstFragment)
+                    supportFragmentManager.beginTransaction().show(allFragment)
                             .hide(secondFragment)
                             .hide(threeFragment)
                             .commit()
@@ -105,14 +106,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_item2 -> {
                     tv_bar_title.text = "Item2"
                     supportFragmentManager.beginTransaction().show(secondFragment)
-                            .hide(firstFragment)
+                            .hide(allFragment)
                             .hide(threeFragment)
                             .commit()
                 }
                 R.id.nav_item3 -> {
                     tv_bar_title.text = "Item3"
                     supportFragmentManager.beginTransaction().show(threeFragment)
-                            .hide(firstFragment)
+                            .hide(allFragment)
                             .hide(secondFragment)
                             .commit()
                 }

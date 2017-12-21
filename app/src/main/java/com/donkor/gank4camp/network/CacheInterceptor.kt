@@ -20,7 +20,7 @@ class CacheInterceptor(context: Context) : Interceptor {
             // read from cache for 60 s
             val maxAge = 60
             val cacheControl = request?.cacheControl().toString()
-            Log.e("CacheInterceptor", "6s load cahe" + cacheControl)
+            Log.e("CacheInterceptor", "60s load cache" + cacheControl)
             response?.newBuilder()?.removeHeader("Pragam")?.removeHeader("Cache-Control")
                     ?.header("Cache-Control", "public,max-age=" + maxAge)?.build()
         } else {
