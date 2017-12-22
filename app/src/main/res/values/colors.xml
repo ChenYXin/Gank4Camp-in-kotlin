@@ -10,4 +10,6 @@
     <color name="blue">#4F94CD</color>
     <!-- 灰色 -->
     <color name="gray">#848383</color>
+    <!-- 红色 -->
+    <color name="red">#ff0000</color>
 </resources>

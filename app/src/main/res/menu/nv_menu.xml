@@ -4,7 +4,7 @@
     <group android:id="@+id/ground1">
         <item android:id="@+id/nav_item1"
             app:showAsAction="ifRoom"
-            android:title="111" />
+            android:title="所有" />
     </group>
     <group android:id="@+id/ground2">
         <item android:id="@+id/nav_item2"

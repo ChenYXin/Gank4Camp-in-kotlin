@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
         nav_view.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_item1 -> {
-                    tv_bar_title.text = "Item1"
+                    tv_bar_title.text = "Gank4Camp"
                     supportFragmentManager.beginTransaction().show(allFragment)
                             .hide(secondFragment)
                             .hide(threeFragment)

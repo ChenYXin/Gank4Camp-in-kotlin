@@ -14,10 +14,7 @@ interface ApiService {
             get() = "http://gank.io/api/data/"
     }
 
-    //    //获取所有第一页数据
-//    @GET("all/{count}/1")
-//    fun getAllData(@Path("count") count: String?): Observable<CommonBean>
-//获取所有第一页数据
+    //获取所有第一页数据
     @GET("all/{count}/1")
     fun getAllData(@Path("count") count: String?):Observable<CommonBean>?
 

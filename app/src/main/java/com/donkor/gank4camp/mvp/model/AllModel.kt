@@ -17,21 +17,11 @@ class AllModel {
         return retrofitClient?.create(ApiService::class.java)
     }
 
-    fun loadData(context: Context?,count: String?): Observable<CommonBean>? {
-//        Log.e("asd","aa"+getApiService(context)?.getAllData(count))
+    fun loadData(context: Context?, count: String?): Observable<CommonBean>? {
         return getApiService(context)?.getAllData(count)
     }
 
-//   fun loadData(context: Context?,count: String?){
-//       Log.e("asd","loadData")
-//       val retrofitClient = context?.let { RetrofitClient.getInstance(it, ApiService.BASE_URL) }
-//       val apiService= retrofitClient?.create(ApiService::class.java)
-//    Log.e("asd","aa"+apiService?.getAllData(count))
-//    return getApiService(context)?.getAllData(count)
-//}
-
     fun loadMoreData(context: Context, count: String?, page: String?): Observable<CommonBean>? {
-        Log.e("asd","aa"+getApiService(context)?.getAllMoreData(count, page))
         return getApiService(context)?.getAllMoreData(count, page)
     }
 }

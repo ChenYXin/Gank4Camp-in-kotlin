@@ -3,10 +3,7 @@ package com.donkor.gank4camp.ui.fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.R.id.recyclerView
-import com.donkor.gank4camp.R.id.refreshLayout
 import com.donkor.gank4camp.adapter.CommonAdapter
 import com.donkor.gank4camp.mvp.contract.AllContract
 import com.donkor.gank4camp.mvp.model.bean.CommonBean
@@ -27,21 +24,17 @@ class AllFragment : BaseFragment(), AllContract.View, SwipeRefreshLayout.OnRefre
     private var mPage: Int? = 1
 
     override fun setData(bean: CommonBean) {
-        Log.e("asd", "============================")
-        Log.e("asd", "bean :" + bean.results.size)
-        Log.e("asd", "bean :" + bean.results[1].who)
-        Log.e("asd", "mIsRefresh ------ " + mIsRefresh)
         if (mIsRefresh) {
             mIsRefresh = false
             refreshLayout.isRefreshing = false
-            Log.e("asd", "mList.size " + mList.size)
             if (mList.size > 0) {
+                mPage = 1
                 mList.clear()
             }
         }
-//        mList.add(bean.results)
-//        bean.results.forEach { mList.add(it) }
-        bean.component2().forEach { mList.add(it) }
+        bean.results.forEach {
+            mList.add(it)
+        }
         mAdapter?.notifyDataSetChanged()
     }
 
@@ -76,7 +69,6 @@ class AllFragment : BaseFragment(), AllContract.View, SwipeRefreshLayout.OnRefre
     }
 
     override fun onRefresh() {
-        Log.e("asd", "onRefresh --- " + !mIsRefresh)
         if (!mIsRefresh) {
             mIsRefresh = true
             mPresenter?.start()

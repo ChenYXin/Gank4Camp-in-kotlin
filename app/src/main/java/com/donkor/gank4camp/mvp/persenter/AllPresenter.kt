@@ -29,7 +29,7 @@ class AllPresenter(context: Context, view: AllContract.View) : AllContract.Prese
     }
 
     override fun requestData() {
-        val observable: Observable<CommonBean>? = mContext?.let { mModel.loadData(it, "10") }
+        val observable: Observable<CommonBean>? = mContext?.let { mModel.loadData(it, "20") }
         observable?.applySchedulers()?.subscribe { commonBean: CommonBean -> mView?.setData(commonBean) }
     }
 

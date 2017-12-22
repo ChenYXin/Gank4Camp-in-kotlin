@@ -8,19 +8,44 @@
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
-
-    <TextView
-        android:id="@+id/tv_content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:drawableLeft="@mipmap/icon_all"
-        android:drawablePadding="3dp"
-        android:gravity="center"
-        android:text="asdqwhidshildhasudhliaushlduasludhliaushdiuashiexzc"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_content_pic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="5dp" />
+
+            <ImageView
+                android:id="@+id/iv_content_type"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@mipmap/icon_all" />
+
+            <me.codeboy.android.aligntextview.AlignTextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/red"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <include layout="@layout/item_pic" />
+    </LinearLayout>
+
 
 </android.support.v7.widget.CardView>

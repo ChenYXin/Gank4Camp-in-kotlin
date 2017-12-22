@@ -11,7 +11,7 @@ import android.view.ViewGroup
  * Created by Donkor on 2017/12/18.
  */
 abstract class BaseFragment : Fragment() {
-    var rootView: View? = null
+    private var rootView: View? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (rootView == null) {
             rootView = inflater?.inflate(getLayoutResources(), container, false)

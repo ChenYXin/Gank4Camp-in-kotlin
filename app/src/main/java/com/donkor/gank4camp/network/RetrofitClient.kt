@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
  */
 class RetrofitClient private constructor(context: Context, baseUrl: String) {
     private var httpCacheDirectory: File? = null
-    private var mConetxt: Context = context
+    private var mContext: Context = context
     private var cache: Cache? = null
     private var okHttpClient: OkHttpClient? = null
     private var retrofit: Retrofit? = null
@@ -27,7 +27,7 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
 
     init {
         if (httpCacheDirectory == null) {
-            httpCacheDirectory = File(mConetxt.cacheDir, "app_cache")
+            httpCacheDirectory = File(mContext.cacheDir, "app_cache")
         }
         try {
             if (cache == null) {
