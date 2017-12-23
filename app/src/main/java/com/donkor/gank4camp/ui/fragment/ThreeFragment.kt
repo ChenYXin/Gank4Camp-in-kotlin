@@ -15,7 +15,7 @@ class ThreeFragment : BaseFragment() {
     }
 
     override fun getLayoutResources(): Int {
-        return R.layout.fragment_frist
+        return R.layout.fragment_common
     }
 
     override fun initView() {

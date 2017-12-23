@@ -2,35 +2,61 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:id="@+id/ground1">
-        <item android:id="@+id/nav_item1"
-            app:showAsAction="ifRoom"
-            android:title="所有" />
+        <item
+            android:id="@+id/nav_item1"
+            android:icon="@mipmap/icon_all"
+            android:title="所有"
+            app:showAsAction="ifRoom" />
     </group>
     <group android:id="@+id/ground2">
-        <item android:id="@+id/nav_item2"
-            app:showAsAction="ifRoom"
-            android:title="222" />
-        <item android:id="@+id/nav_item3"
-            android:title="333"
-            app:showAsAction="ifRoom"/>
-        <item android:id="@+id/nav_item4"
-            android:title="444"
-            app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/nav_android"
+            android:icon="@mipmap/icon_android"
+            android:title="Android"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/nav_ios"
+            android:icon="@mipmap/icon_ios"
+            android:title="iOS"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/nav_girl"
+            android:icon="@mipmap/icon_girl"
+            android:title="福利"
+            app:showAsAction="ifRoom" />
     </group>
     <group android:id="@+id/ground3">
-        <item android:id="@+id/nav_item5"
-            app:showAsAction="ifRoom"
-            android:title="555" />
-        <item android:id="@+id/nav_item6"
-            android:title="666"
-            app:showAsAction="ifRoom"/>
-        <item android:id="@+id/nav_item7"
-            android:title="777"
-            app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/nav_video"
+            android:icon="@mipmap/icon_video"
+            android:title="休息视频"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/nav_expand"
+            android:icon="@mipmap/icon_expand"
+            android:title="拓展资源"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/nav_js"
+            android:icon="@mipmap/icon_js"
+            android:title="前端"
+            app:showAsAction="ifRoom" />
     </group>
     <group android:id="@+id/ground4">
-        <item android:id="@+id/nav_item_about"
-            app:showAsAction="ifRoom"
-            android:title="关于Gank4Camp" />
+        <item
+            android:id="@+id/nav_other"
+            android:icon="@mipmap/icon_other"
+            android:title="瞎推荐"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/nav_app"
+            android:icon="@mipmap/icon_app"
+            android:title="App"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/nav_item_about"
+            android:icon="@mipmap/icon_about"
+            android:title="关于Gank4Camp"
+            app:showAsAction="ifRoom" />
     </group>
 </menu>

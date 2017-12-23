@@ -8,7 +8,7 @@ import com.donkor.gank4camp.mvp.model.bean.CommonBean
  *
  * Created by Donkor on 2017/12/19.
  */
-interface AllContract {
+interface CommonContract {
     interface View : BaseView<Presenter> {
         fun setData(bean: CommonBean)
     }

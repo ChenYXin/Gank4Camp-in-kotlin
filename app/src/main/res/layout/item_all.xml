@@ -8,11 +8,16 @@
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="5dp">
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_content_pic"
@@ -20,6 +25,13 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp" />
 
+            <ImageView
+                android:id="@+id/iv_content_type"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                />
 
             <me.codeboy.android.aligntextview.AlignTextView
                 android:id="@+id/tv_content"
@@ -31,6 +43,9 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
+
+        <include layout="@layout/item_pic" />
+    </LinearLayout>
 
 
 </android.support.v7.widget.CardView>

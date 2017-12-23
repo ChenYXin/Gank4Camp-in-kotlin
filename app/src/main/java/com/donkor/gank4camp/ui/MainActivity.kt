@@ -7,9 +7,8 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.ui.commom.SecondFragment
 import com.donkor.gank4camp.ui.fragment.AllFragment
-import com.donkor.gank4camp.ui.fragment.FirstFragment
+import com.donkor.gank4camp.ui.fragment.AndroidFragment
 import com.donkor.gank4camp.ui.fragment.ThreeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -22,7 +21,7 @@ private val TAG: String? = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
     private var allFragment: AllFragment? = null
-    private var secondFragment: SecondFragment? = null
+    private var androidFragment: AndroidFragment? = null
     private var threeFragment: ThreeFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         /*设置ActionBar*/
         setActionBar()
 
-        /*设置Drawerlayout开关*/
+        /*设置DrawerLayout开关*/
         setDrawerToggle()
 
         /*设置监听器*/
@@ -53,8 +52,8 @@ class MainActivity : AppCompatActivity() {
                 if (item is AllFragment) {
                     allFragment = item
                 }
-                if (item is SecondFragment) {
-                    secondFragment = item
+                if (item is AndroidFragment) {
+                    androidFragment = item
                 }
                 if (item is ThreeFragment) {
                     threeFragment = item
@@ -62,16 +61,16 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             allFragment = AllFragment()
-            secondFragment = SecondFragment()
+            androidFragment = AndroidFragment()
             threeFragment = ThreeFragment()
             val fragmentTrans = supportFragmentManager.beginTransaction()
             fragmentTrans.add(R.id.fl_content, allFragment)
-            fragmentTrans.add(R.id.fl_content, secondFragment)
+            fragmentTrans.add(R.id.fl_content, androidFragment)
             fragmentTrans.add(R.id.fl_content, threeFragment)
             fragmentTrans.commit()
         }
         supportFragmentManager.beginTransaction().show(allFragment)
-                .hide(secondFragment)
+                .hide(androidFragment)
                 .hide(threeFragment)
                 .commit()
     }
@@ -84,11 +83,11 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
-    /*设置Drawerlayout的开关,并且和Home图标联动*/
+    /*设置DrawerLayout的开关,并且和Home图标联动*/
     private fun setDrawerToggle() {
         val mToggle = ActionBarDrawerToggle(this, drawer_layout, toolbar, 0, 0)
         drawer_layout.addDrawerListener(mToggle)
-        /*同步drawerlayout的状态*/
+        /*同步DrawerLayout的状态*/
         mToggle.syncState()
     }
 
@@ -99,22 +98,22 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_item1 -> {
                     tv_bar_title.text = "Gank4Camp"
                     supportFragmentManager.beginTransaction().show(allFragment)
-                            .hide(secondFragment)
+                            .hide(androidFragment)
                             .hide(threeFragment)
                             .commit()
                 }
-                R.id.nav_item2 -> {
-                    tv_bar_title.text = "Item2"
-                    supportFragmentManager.beginTransaction().show(secondFragment)
+                R.id.nav_android -> {
+                    tv_bar_title.text = "Android"
+                    supportFragmentManager.beginTransaction().show(androidFragment)
                             .hide(allFragment)
                             .hide(threeFragment)
                             .commit()
                 }
-                R.id.nav_item3 -> {
-                    tv_bar_title.text = "Item3"
+                R.id.nav_ios -> {
+                    tv_bar_title.text = "IOS"
                     supportFragmentManager.beginTransaction().show(threeFragment)
                             .hide(allFragment)
-                            .hide(secondFragment)
+                            .hide(androidFragment)
                             .commit()
                 }
             }

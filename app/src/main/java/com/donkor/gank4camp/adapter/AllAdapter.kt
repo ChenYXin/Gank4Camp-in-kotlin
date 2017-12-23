@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.donkor.gank4camp.R
+import com.donkor.gank4camp.R.id.*
 import com.donkor.gank4camp.mvp.model.bean.CommonBean
 import com.donkor.gank4camp.utils.ImageLoadUtils
 import me.codeboy.android.aligntextview.AlignTextView
@@ -21,7 +22,7 @@ import me.codeboy.android.aligntextview.AlignTextView
 /**
  * Created by donkor on 2017/12/20.
  */
-class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var mContext: Context? = null
     private var mList: MutableList<CommonBean.Result>? = null
     private var inflater: LayoutInflater? = null
@@ -58,7 +59,7 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder? {
         when (viewType) {
-            TYPE_ITEM -> return CommonHolder(inflater?.inflate(R.layout.item_common, parent, false))
+            TYPE_ITEM -> return CommonHolder(inflater?.inflate(R.layout.item_all, parent, false))
             TYPE_FOOTER -> return FooterViewHolder(inflater?.inflate(R.layout.load_more, parent, false))
         }
         return null
@@ -68,6 +69,18 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
 
         if (holder is CommonHolder) {
+            if (mList?.get(position)?.type.equals("福利")) {
+                holder.llPic?.visibility = View.VISIBLE
+                holder.tvContent?.visibility = View.GONE
+                holder.ivContentPic?.visibility = View.GONE
+                holder.tvPicDes?.text = mList?.get(position)?.desc
+                holder.ivContentType?.visibility = View.GONE
+                ImageLoadUtils.display(mContext, holder.ivPic, mList?.get(position)?.url)
+            } else {
+                holder.llPic?.visibility = View.GONE
+                holder.tvContent?.visibility = View.VISIBLE
+                holder.ivContentPic?.visibility = View.VISIBLE
+
                 val desc: String? = mList?.get(position)?.desc
                 val url: String? = mList?.get(position)?.url
                 val author: String? = mList?.get(position)?.who
@@ -83,6 +96,17 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
                 } else {
                     holder.ivContentPic?.visibility = View.GONE
                 }
+
+                when (mList?.get(position)?.type) {
+                    "Android" -> holder.ivContentType?.setImageResource(R.mipmap.icon_android)
+                    "iOS" -> holder.ivContentType?.setImageResource(R.mipmap.icon_ios)
+                    "休息视频" -> holder.ivContentType?.setImageResource(R.mipmap.icon_video)
+                    "拓展资源" -> holder.ivContentType?.setImageResource(R.mipmap.icon_expand)
+                    "前端" -> holder.ivContentType?.setImageResource(R.mipmap.icon_js)
+                    "瞎推荐" -> holder.ivContentType?.setImageResource(R.mipmap.icon_other)
+                    "App" -> holder.ivContentType?.setImageResource(R.mipmap.icon_app)
+                }
+            }
         } else if (holder is FooterViewHolder) {
             when (mLoadMoreStatus) {
                 PULLUP_LOAD_MORE -> holder.tvLoadText?.text = "上拉加载更多"
@@ -95,11 +119,19 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
 
     class CommonHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         var tvContent: AlignTextView? = null
+        var ivPic: ImageView? = null
         var ivContentPic: ImageView? = null
-        
+        var ivContentType: ImageView? = null
+        var llPic: LinearLayout? = null
+        var tvPicDes: TextView? = null
+
         init {
-            tvContent = itemView?.findViewById(R.id.tv_content)
-            ivContentPic = itemView?.findViewById(R.id.iv_content_pic)
+            tvContent = itemView?.findViewById(tv_content)
+            ivPic = itemView?.findViewById(iv_pic)
+            llPic = itemView?.findViewById(ll_pic)
+            tvPicDes = itemView?.findViewById(tv_pic_des)
+            ivContentPic = itemView?.findViewById(iv_content_pic)
+            ivContentType = itemView?.findViewById(iv_content_type)
         }
     }
 
@@ -109,9 +141,9 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
         var linLoadLayout: LinearLayout? = null
 
         init {
-            pbLoad = itemView?.findViewById(R.id.pb_load)
-            tvLoadText = itemView?.findViewById(R.id.tv_load_text)
-            linLoadLayout = itemView?.findViewById(R.id.lin_load_layout)
+            pbLoad = itemView?.findViewById(pb_load)
+            tvLoadText = itemView?.findViewById(tv_load_text)
+            linLoadLayout = itemView?.findViewById(lin_load_layout)
         }
     }
 

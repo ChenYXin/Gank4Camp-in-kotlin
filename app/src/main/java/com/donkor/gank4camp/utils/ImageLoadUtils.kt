@@ -19,7 +19,7 @@ class ImageLoadUtils{
             Glide.with(context).load(url)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .centerCrop()
-                    .thumbnail(0.1f)
+//                    .thumbnail(0.1f)
                     .placeholder(R.mipmap.ic_image_loading)
                     .error(R.mipmap.ic_empty_picture)
                     .crossFade().into(imageView)
