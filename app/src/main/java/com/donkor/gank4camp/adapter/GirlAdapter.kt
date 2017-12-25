@@ -19,7 +19,7 @@ import com.donkor.gank4camp.utils.ImageLoadUtils
 /**
  * Created by donkor on 2017/12/20.
  */
-class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GirlAdapter(context: Context, list: MutableList<CommonBean.Result>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var mContext: Context? = null
     private var mList: MutableList<CommonBean.Result>? = null
     private var inflater: LayoutInflater? = null
@@ -56,7 +56,7 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder? {
         when (viewType) {
-            TYPE_ITEM -> return CommonHolder(inflater?.inflate(R.layout.item_common, parent, false))
+            TYPE_ITEM -> return CommonHolder(inflater?.inflate(R.layout.item_girl, parent, false))
             TYPE_FOOTER -> return FooterViewHolder(inflater?.inflate(R.layout.load_more, parent, false))
         }
         return null
@@ -66,17 +66,9 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
 
         if (holder is CommonHolder) {
-            val desc: String? = mList?.get(position)?.desc
-            val url: String? = mList?.get(position)?.url
-            val author: String? = mList?.get(position)?.who
-            holder.tvContent?.text = Html.fromHtml("<font color=\"${mContext?.resources?.getColor(R.color.blue)}\"><u><a href='$url'>$desc</a></u></font><font color=\"gray\">[ $author ]</font>")
-            holder.tvContent?.movementMethod = LinkMovementMethod.getInstance()
+            holder.tvPicDes?.text = mList?.get(position)?.desc
+            ImageLoadUtils.display(mContext, holder.ivPic, mList?.get(position)?.url)
 
-            if (null != mList?.get(position)?.images && mList?.get(position)?.images?.size != 0) {
-                ImageLoadUtils.display(mContext, holder.ivContentPic, mList?.get(position)?.images!![0])
-            } else {
-                holder.ivContentPic?.visibility = View.GONE
-            }
         } else if (holder is FooterViewHolder) {
             when (mLoadMoreStatus) {
                 PULLUP_LOAD_MORE -> holder.tvLoadText?.text = "上拉加载更多"
@@ -88,12 +80,12 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
     }
 
     class CommonHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        var tvContent: TextView? = null
-        var ivContentPic: ImageView? = null
+        var ivPic: ImageView? = null
+        var tvPicDes: TextView? = null
 
         init {
-            tvContent = itemView?.findViewById(R.id.tv_content)
-            ivContentPic = itemView?.findViewById(R.id.iv_content_pic)
+            ivPic = itemView?.findViewById(R.id.iv_pic)
+            tvPicDes = itemView?.findViewById(R.id.tv_pic_des)
         }
     }
 

@@ -14,19 +14,11 @@ interface ApiService {
             get() = "http://gank.io/api/data/"
     }
 
-    //获取所有第一页数据
-    @GET("all/{count}/1")
-    fun getAllData(@Path("count") count: String?):Observable<CommonBean>?
+    //获取第一页数据
+    @GET("{type}/{count}/1")
+    fun getData(@Path("type")type:String,@Path("count") count: String?):Observable<CommonBean>?
 
-    //获取所有第一页之后的数据
-    @GET("all/{count}/{page}")
-    fun getAllMoreData(@Path("count") count: String?, @Path("page") page: String?): Observable<CommonBean>
-
-    //获取Android第一页数据
-    @GET("Android/{count}/1")
-    fun getAndroidData(@Path("count") count: String?):Observable<CommonBean>?
-
-    //获取Android第一页之后的数据
-    @GET("Android/{count}/{page}")
-    fun getAndroidMoreData(@Path("count") count: String?, @Path("page") page: String?): Observable<CommonBean>
+    //获取第一页之后的数据
+    @GET("{type}/{count}/{page}")
+    fun getMoreData(@Path("type")type:String,@Path("count") count: String?, @Path("page") page: String?): Observable<CommonBean>
 }

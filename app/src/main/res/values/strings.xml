@@ -4,4 +4,7 @@
     <string name="splash_activity_splash_instruction">Gank4Camp</string>
     <!--MainActivity-->
     <string name="main_activity_item_all">Gank4Camp</string>
+    <!--AboutActivity-->
+    <string name="about_activity_back">返回</string>
+    <string name="about_activity_title">Gank4Camp-in-Kotlin</string>
 </resources>

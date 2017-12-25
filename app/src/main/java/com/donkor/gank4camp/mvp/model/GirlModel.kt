@@ -10,8 +10,8 @@ import io.reactivex.Observable
  *
  * Created by Donkor on 2017/12/19.
  */
-class AndroidModel {
-    private val type: String = "Android"
+class GirlModel {
+    private val type:String="福利"
 
     private fun getApiService(context: Context?): ApiService? {
         val retrofitClient = context?.let { RetrofitClient.getInstance(it, ApiService.BASE_URL) }
@@ -19,10 +19,10 @@ class AndroidModel {
     }
 
     fun loadData(context: Context?, count: String?): Observable<CommonBean>? {
-        return getApiService(context)?.getData(type, count)
+        return getApiService(context)?.getData(type,count)
     }
 
     fun loadMoreData(context: Context, count: String?, page: String?): Observable<CommonBean>? {
-        return getApiService(context)?.getMoreData(type, count, page)
+        return getApiService(context)?.getMoreData(type,count, page)
     }
 }

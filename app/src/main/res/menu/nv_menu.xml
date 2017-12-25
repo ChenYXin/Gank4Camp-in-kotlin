@@ -3,53 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:id="@+id/ground1">
         <item
-            android:id="@+id/nav_item1"
+            android:id="@+id/nav_item_all"
             android:icon="@mipmap/icon_all"
             android:title="所有"
             app:showAsAction="ifRoom" />
     </group>
     <group android:id="@+id/ground2">
         <item
-            android:id="@+id/nav_android"
+            android:id="@+id/nav_item_android"
             android:icon="@mipmap/icon_android"
             android:title="Android"
             app:showAsAction="ifRoom" />
         <item
-            android:id="@+id/nav_ios"
+            android:id="@+id/nav_item_ios"
             android:icon="@mipmap/icon_ios"
             android:title="iOS"
             app:showAsAction="ifRoom" />
         <item
-            android:id="@+id/nav_girl"
+            android:id="@+id/nav_item_girl"
             android:icon="@mipmap/icon_girl"
             android:title="福利"
             app:showAsAction="ifRoom" />
     </group>
     <group android:id="@+id/ground3">
         <item
-            android:id="@+id/nav_video"
+            android:id="@+id/nav_item_video"
             android:icon="@mipmap/icon_video"
             android:title="休息视频"
             app:showAsAction="ifRoom" />
         <item
-            android:id="@+id/nav_expand"
+            android:id="@+id/nav_item_expand"
             android:icon="@mipmap/icon_expand"
             android:title="拓展资源"
             app:showAsAction="ifRoom" />
         <item
-            android:id="@+id/nav_js"
+            android:id="@+id/nav_item_js"
             android:icon="@mipmap/icon_js"
             android:title="前端"
             app:showAsAction="ifRoom" />
     </group>
     <group android:id="@+id/ground4">
         <item
-            android:id="@+id/nav_other"
+            android:id="@+id/nav_item_other"
             android:icon="@mipmap/icon_other"
             android:title="瞎推荐"
             app:showAsAction="ifRoom" />
         <item
-            android:id="@+id/nav_app"
+            android:id="@+id/nav_item_app"
             android:icon="@mipmap/icon_app"
             android:title="App"
             app:showAsAction="ifRoom" />

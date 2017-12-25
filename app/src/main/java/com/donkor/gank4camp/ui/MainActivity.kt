@@ -7,9 +7,8 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.ui.fragment.AllFragment
-import com.donkor.gank4camp.ui.fragment.AndroidFragment
-import com.donkor.gank4camp.ui.fragment.ThreeFragment
+import com.donkor.gank4camp.switchActivity
+import com.donkor.gank4camp.ui.fragment.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -22,7 +21,13 @@ private val TAG: String? = "MainActivity"
 class MainActivity : AppCompatActivity() {
     private var allFragment: AllFragment? = null
     private var androidFragment: AndroidFragment? = null
-    private var threeFragment: ThreeFragment? = null
+    private var iosFragment: IosFragment? = null
+    private var videoFragment: VideoFragment? = null
+    private var appFragment: AppFragment? = null
+    private var expandFragment: ExpandFragment? = null
+    private var jsFragment: JsFragment? = null
+    private var otherFragment: OtherFragment? = null
+    private var girlFragment: GirlFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,23 +60,59 @@ class MainActivity : AppCompatActivity() {
                 if (item is AndroidFragment) {
                     androidFragment = item
                 }
-                if (item is ThreeFragment) {
-                    threeFragment = item
+                if (item is IosFragment) {
+                    iosFragment = item
+                }
+                if (item is VideoFragment) {
+                    videoFragment = item
+                }
+                if (item is AppFragment) {
+                    appFragment = item
+                }
+                if (item is ExpandFragment) {
+                    expandFragment = item
+                }
+                if (item is JsFragment) {
+                    jsFragment = item
+                }
+                if (item is OtherFragment) {
+                    otherFragment = item
+                }
+                if (item is GirlFragment) {
+                    girlFragment = item
                 }
             }
         } else {
             allFragment = AllFragment()
             androidFragment = AndroidFragment()
-            threeFragment = ThreeFragment()
+            iosFragment = IosFragment()
+            videoFragment = VideoFragment()
+            appFragment = AppFragment()
+            expandFragment = ExpandFragment()
+            jsFragment = JsFragment()
+            girlFragment = GirlFragment()
+            otherFragment = OtherFragment()
             val fragmentTrans = supportFragmentManager.beginTransaction()
             fragmentTrans.add(R.id.fl_content, allFragment)
             fragmentTrans.add(R.id.fl_content, androidFragment)
-            fragmentTrans.add(R.id.fl_content, threeFragment)
+            fragmentTrans.add(R.id.fl_content, iosFragment)
+            fragmentTrans.add(R.id.fl_content, videoFragment)
+            fragmentTrans.add(R.id.fl_content, appFragment)
+            fragmentTrans.add(R.id.fl_content, expandFragment)
+            fragmentTrans.add(R.id.fl_content, jsFragment)
+            fragmentTrans.add(R.id.fl_content, otherFragment)
+            fragmentTrans.add(R.id.fl_content, girlFragment)
             fragmentTrans.commit()
         }
         supportFragmentManager.beginTransaction().show(allFragment)
                 .hide(androidFragment)
-                .hide(threeFragment)
+                .hide(iosFragment)
+                .hide(videoFragment)
+                .hide(appFragment)
+                .hide(expandFragment)
+                .hide(jsFragment)
+                .hide(otherFragment)
+                .hide(girlFragment)
                 .commit()
     }
 
@@ -95,26 +136,125 @@ class MainActivity : AppCompatActivity() {
     private fun setListener() {
         nav_view.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_item1 -> {
+                R.id.nav_item_all -> {
                     tv_bar_title.text = "Gank4Camp"
                     supportFragmentManager.beginTransaction().show(allFragment)
                             .hide(androidFragment)
-                            .hide(threeFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
                             .commit()
                 }
-                R.id.nav_android -> {
+                R.id.nav_item_android -> {
                     tv_bar_title.text = "Android"
                     supportFragmentManager.beginTransaction().show(androidFragment)
                             .hide(allFragment)
-                            .hide(threeFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
                             .commit()
                 }
-                R.id.nav_ios -> {
+                R.id.nav_item_ios -> {
                     tv_bar_title.text = "IOS"
-                    supportFragmentManager.beginTransaction().show(threeFragment)
+                    supportFragmentManager.beginTransaction().show(iosFragment)
                             .hide(allFragment)
                             .hide(androidFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
                             .commit()
+                }
+                R.id.nav_item_video -> {
+                    tv_bar_title.text = "Video"
+                    supportFragmentManager.beginTransaction().show(videoFragment)
+                            .hide(allFragment)
+                            .hide(androidFragment)
+                            .hide(iosFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
+                            .commit()
+                }
+                R.id.nav_item_app -> {
+                    tv_bar_title.text = "App"
+                    supportFragmentManager.beginTransaction().show(appFragment)
+                            .hide(allFragment)
+                            .hide(androidFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
+                            .commit()
+                }
+                R.id.nav_item_expand -> {
+                    tv_bar_title.text = "Expand"
+                    supportFragmentManager.beginTransaction().show(expandFragment)
+                            .hide(allFragment)
+                            .hide(androidFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
+                            .commit()
+                }
+                R.id.nav_item_js -> {
+                    tv_bar_title.text = "Js"
+                    supportFragmentManager.beginTransaction().show(jsFragment)
+                            .hide(allFragment)
+                            .hide(androidFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(otherFragment)
+                            .hide(girlFragment)
+                            .commit()
+                }
+                R.id.nav_item_other -> {
+                    tv_bar_title.text = "Other"
+                    supportFragmentManager.beginTransaction().show(otherFragment)
+                            .hide(allFragment)
+                            .hide(androidFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(girlFragment)
+                            .commit()
+                }
+                R.id.nav_item_girl -> {
+                    tv_bar_title.text = "Girl"
+                    supportFragmentManager.beginTransaction().show(girlFragment)
+                            .hide(allFragment)
+                            .hide(androidFragment)
+                            .hide(iosFragment)
+                            .hide(videoFragment)
+                            .hide(appFragment)
+                            .hide(expandFragment)
+                            .hide(jsFragment)
+                            .hide(otherFragment)
+                            .commit()
+                }
+                R.id.nav_item_about -> {
+                    switchActivity<AboutActivity>()
                 }
             }
             drawer_layout.closeDrawer(GravityCompat.START)

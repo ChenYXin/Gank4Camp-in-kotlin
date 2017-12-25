@@ -17,7 +17,6 @@ import com.donkor.gank4camp.R
 import com.donkor.gank4camp.R.id.*
 import com.donkor.gank4camp.mvp.model.bean.CommonBean
 import com.donkor.gank4camp.utils.ImageLoadUtils
-import me.codeboy.android.aligntextview.AlignTextView
 
 /**
  * Created by donkor on 2017/12/20.
@@ -84,11 +83,7 @@ class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : Recy
                 val desc: String? = mList?.get(position)?.desc
                 val url: String? = mList?.get(position)?.url
                 val author: String? = mList?.get(position)?.who
-                holder.tvContent?.text = Html.fromHtml("<a href='$url'>$desc</a>[ $author ]")
-                //下滑线
-                holder.tvContent?.paint?.flags = Paint.UNDERLINE_TEXT_FLAG
-                //抗锯齿
-                holder.tvContent?.paint?.isAntiAlias = true
+                holder.tvContent?.text = Html.fromHtml("<font color=\"${mContext?.resources?.getColor(R.color.blue)}\"><u><a href='$url'>$desc</a></u></font><font color=\"gray\">[ $author ]</font>")
                 holder.tvContent?.movementMethod = LinkMovementMethod.getInstance()
 
                 if (null != mList?.get(position)?.images && mList?.get(position)?.images?.size != 0) {
@@ -118,17 +113,17 @@ class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : Recy
     }
 
     class CommonHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        var tvContent: AlignTextView? = null
-        var ivPic: ImageView? = null
+        var tvContent: TextView? = null
         var ivContentPic: ImageView? = null
         var ivContentType: ImageView? = null
         var llPic: LinearLayout? = null
+        var ivPic: ImageView? = null
         var tvPicDes: TextView? = null
 
         init {
             tvContent = itemView?.findViewById(tv_content)
-            ivPic = itemView?.findViewById(iv_pic)
             llPic = itemView?.findViewById(ll_pic)
+            ivPic = itemView?.findViewById(iv_pic)
             tvPicDes = itemView?.findViewById(tv_pic_des)
             ivContentPic = itemView?.findViewById(iv_content_pic)
             ivContentType = itemView?.findViewById(iv_content_type)

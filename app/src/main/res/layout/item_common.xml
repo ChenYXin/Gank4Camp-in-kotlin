@@ -20,15 +20,22 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp" />
 
-
-            <me.codeboy.android.aligntextview.AlignTextView
+            <TextView
                 android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:textColor="@color/red"
                 android:textSize="18sp" />
+
+            <!--<me.codeboy.android.aligntextview.AlignTextView-->
+                <!--android:id="@+id/tv_content"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginRight="5dp"-->
+                <!--android:textColor="@color/red"-->
+                <!--android:textSize="18sp" />-->
 
         </LinearLayout>
 

@@ -4,25 +4,26 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.adapter.AllAdapter
+import com.donkor.gank4camp.adapter.CommonAdapter
 import com.donkor.gank4camp.mvp.contract.CommonContract
 import com.donkor.gank4camp.mvp.model.bean.CommonBean
-import com.donkor.gank4camp.mvp.persenter.AllPresenter
+import com.donkor.gank4camp.mvp.persenter.JsPresenter
+import com.donkor.gank4camp.mvp.persenter.VideoPresenter
 import com.donkor.gank4camp.ui.commom.BaseFragment
-import kotlinx.android.synthetic.main.fragment_all.*
+import kotlinx.android.synthetic.main.fragment_common.*
 
 /**
- * 全部
- * Created by Donkor on 2017/12/19.
+ *
+ * Created by Donkor on 2017/12/18.
  */
-class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRefreshListener {
+class JsFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.OnRefreshListener {
+
     private var mIsRefresh: Boolean = false
-    private var mPresenter: AllPresenter? = null
-    private var mAdapter: AllAdapter? = null
+    private var mPresenter: JsPresenter? = null
+    private var mAdapter: CommonAdapter? = null
     private var mList = ArrayList<CommonBean.Result>()
     private val mCount: String? = "10"
     private var mPage: Int? = 1
-
 
     override fun setData(bean: CommonBean) {
         if (mIsRefresh) {
@@ -40,15 +41,30 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
         mAdapter?.notifyDataSetChanged()
     }
 
+    override fun loadData() {
+        //懒加载，当前Fragment显示的时候才进行网络请求
+        //如果数据不需要每次都刷新，可以先判断数据是否存在
+        //数据不存在 -> 进行网络请求    数据存在 -> 什么都不做
+        if(mList.size==0)
+            mPresenter?.start()
+    }
+
     override fun getLayoutResources(): Int {
-        return R.layout.fragment_all
+        return R.layout.fragment_common
+    }
+
+    override fun onRefresh() {
+        if (!mIsRefresh) {
+            mIsRefresh = true
+            mPresenter?.start()
+        }
     }
 
     override fun initView() {
-        mPresenter = AllPresenter(context, this)
-        mPresenter?.start()
+        mPresenter = JsPresenter(context, this)
+//        mPresenter?.start()
         recyclerView.layoutManager = LinearLayoutManager(context)
-        mAdapter = AllAdapter(context, mList)
+        mAdapter = CommonAdapter(context, mList)
         recyclerView.adapter = mAdapter
         refreshLayout.setOnRefreshListener(this)
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -70,18 +86,4 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
             }
         })
     }
-
-    override fun onRefresh() {
-        if (!mIsRefresh) {
-            mIsRefresh = true
-            mPresenter?.start()
-        }
-    }
-
-    override fun loadData() {
-//        Log.e("asd", "size : " + mList.size)
-        if (mList.size == 0)
-            mPresenter?.start()
-    }
 }
-

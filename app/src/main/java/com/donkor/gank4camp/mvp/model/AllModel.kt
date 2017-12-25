@@ -11,17 +11,18 @@ import io.reactivex.Observable
  * Created by Donkor on 2017/12/19.
  */
 class AllModel {
+    private val type:String="all"
 
     private fun getApiService(context: Context?): ApiService? {
         val retrofitClient = context?.let { RetrofitClient.getInstance(it, ApiService.BASE_URL) }
         return retrofitClient?.create(ApiService::class.java)
     }
 
-    fun loadData(context: Context?, count: String?): Observable<CommonBean>? {
-        return getApiService(context)?.getAllData(count)
+    fun loadData(context: Context?,count: String?): Observable<CommonBean>? {
+        return getApiService(context)?.getData(type,count)
     }
 
-    fun loadMoreData(context: Context, count: String?, page: String?): Observable<CommonBean>? {
-        return getApiService(context)?.getAllMoreData(count, page)
+    fun loadMoreData(context: Context, count:String?, page: String?): Observable<CommonBean>? {
+        return getApiService(context)?.getMoreData(type,count, page)
     }
 }
