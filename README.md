@@ -18,6 +18,8 @@ gank.io kotlin实现的干货集中营Android客户端，每天一张美女图�
 - [Glide 图片缓存，加载缩略图，加载高清原图](https://github.com/bumptech/glide)
 
 # Download
+[火速下载](http://fir.im/Gank4Camp)<br>
+<img src="https://raw.githubusercontent.com/ChenYXin/Gank4Camp-in-kotlin/master/Screenshot/download_pic.jpg" />
 
 # Version
 v 1.0（2017_12_26）
