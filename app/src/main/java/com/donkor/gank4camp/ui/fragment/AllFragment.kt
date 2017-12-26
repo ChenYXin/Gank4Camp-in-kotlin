@@ -1,5 +1,6 @@
 package com.donkor.gank4camp.ui.fragment
 
+import android.graphics.Color
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -51,6 +52,8 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
         mAdapter = AllAdapter(context, mList)
         recyclerView.adapter = mAdapter
         refreshLayout.setOnRefreshListener(this)
+        //下拉刷新进度条颜色
+        refreshLayout.setColorSchemeColors(Color.rgb(79, 148, 205))
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             var lastVisibleItem: Int? = 0
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {

@@ -1,14 +1,17 @@
 package com.donkor.gank4camp.ui
 
+import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.switchActivity
 import com.donkor.gank4camp.ui.fragment.*
+import com.gyf.barlibrary.ImmersionBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -31,7 +34,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        val view:View=findViewById<View>(R.id.view_status) as View
+
+        ImmersionBar.with(this).statusBarView(view).init()
 
         /*设置ActionBar*/
         setActionBar()
@@ -266,5 +273,10 @@ class MainActivity : AppCompatActivity() {
     private fun initToolBar() {
         tv_bar_title.typeface = Typeface.createFromAsset(this.assets, "fonts/Lobster-1.4.otf")
         tv_bar_title.text = resources.getString(R.string.main_activity_item_all)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ImmersionBar.with(this).destroy()//不调用该方法，如果界面bar发生改变，在不关闭app的情况下，退出此界面再进入将记忆最后一次bar改变的状态
     }
 }

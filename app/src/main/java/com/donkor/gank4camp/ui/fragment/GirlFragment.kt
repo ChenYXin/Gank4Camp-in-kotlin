@@ -1,5 +1,6 @@
 package com.donkor.gank4camp.ui.fragment
 
+import android.graphics.Color
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
@@ -67,6 +68,7 @@ class GirlFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.On
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         mAdapter = GirlAdapter(context, mList)
         recyclerView.adapter = mAdapter
+        refreshLayout.setColorSchemeColors(Color.rgb(79, 148, 205))
         refreshLayout.setOnRefreshListener(this)
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             var lastVisibleItem: Int? = 0

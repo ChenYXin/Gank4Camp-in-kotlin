@@ -32,15 +32,15 @@ dependencies {
 //    androidTestImplementation 'com.android.support.test:runner:1.0.1'
 //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
+    //4.4以上沉浸式状态栏和沉浸式导航栏管理
+    compile 'com.gyf.barlibrary:barlibrary:2.3.0'
     //引入rxJava
     compile 'io.reactivex.rxjava2:rxjava:2.1.2'
     //引入retrofit
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    //引入okhttp
-//    compile 'com.squareup.okHttp3:okhttp:3.5.0'
+    //引入okHttp
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     //引入Log拦截器，方便DEBUG模式输出log信息
-//    compile 'com.squareup.okHttp3:logging-interceptor:3.5.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     //引入json转换器，方便将返回的数据转换为json格式
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
