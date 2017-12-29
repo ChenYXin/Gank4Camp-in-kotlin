@@ -2,7 +2,6 @@ package com.donkor.gank4camp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Paint
 import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -11,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.R.id.*

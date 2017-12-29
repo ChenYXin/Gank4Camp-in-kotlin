@@ -1,5 +1,5 @@
 # Gank4Camp-in-kotlin
-gank.io kotlin实现的干货集中营Android客户端，每天一张美女图片，一个视频短片，若干程序干货，周一到周五每天更新。
+🌞 gank.io kotlin实现的干货集中营Android客户端，每天一张美女图片，一个视频短片，若干程序干货，周一到周五每天更新。
 (Material Design & MVP & Retrofit2.0 + OKHttp3 & rxJava2 ...)
 
 # Screenshot
@@ -18,8 +18,7 @@ gank.io kotlin实现的干货集中营Android客户端，每天一张美女图�
 - [Glide 图片缓存，加载缩略图，加载高清原图](https://github.com/bumptech/glide)
 
 # Download
-[火速下载](http://fir.im/Gank4Camp)<br>
-<img src="https://raw.githubusercontent.com/ChenYXin/Gank4Camp-in-kotlin/master/Screenshot/donwnload_pic.png" />
+[火速下载](https://github.com/ChenYXin/Gank4Camp-in-kotlin/releases/download/v1.0/Gank4Camp-in-kotlin-2017_12_29.apk)
 
 # Version
 v 1.0（2017_12_26）
