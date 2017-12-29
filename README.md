@@ -11,7 +11,7 @@ gank.io kotlin实现的干货集中营Android客户端，每天一张美女图�
 - [Retrofit2.0](https://github.com/square/retrofit)+[OKHttp3](https://github.com/square/okhttp)+[rxJava2](https://github.com/ReactiveX/RxJava)主要用于网络请求
 - [retrofit2-rxJava2-adapter引入rxJava适配器，方便rxJava与retrofit的结合](https://github.com/JakeWharton/retrofit2-rxjava2-adapter)
 - [ImmersionBar4.4以上沉浸式状态栏和沉浸式导航栏管理](https://github.com/gyf-dev/ImmersionBar)
-- [Kotlin中SwipeRefreshLayout结合RecyclerView下拉刷新上拉加载](http://blog.csdn.net/donkor_/article/details/78820880)
+- [Android智能下拉刷新框架-SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 - [Kotlin实现侧滑抽屉菜单(DrawerLayout+NavigationView+Toolbar)](http://blog.csdn.net/donkor_/article/details/78819081)
 - [Fragment懒加载模式](http://blog.csdn.net/donkor_/article/details/78819081)
 - [Kotlin中handler避免内存泄漏](http://blog.csdn.net/donkor_/article/details/78796518)

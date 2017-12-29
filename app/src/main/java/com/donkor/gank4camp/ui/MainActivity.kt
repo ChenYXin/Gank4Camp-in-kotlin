@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
  * 主页面
  * Created by donkor on 2017/12/18.
  */
-//private val TAG: String? = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
     lateinit private var allFragment: AllFragment

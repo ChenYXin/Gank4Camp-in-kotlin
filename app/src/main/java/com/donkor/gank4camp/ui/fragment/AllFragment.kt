@@ -10,14 +10,19 @@ import com.donkor.gank4camp.mvp.contract.CommonContract
 import com.donkor.gank4camp.mvp.model.bean.CommonBean
 import com.donkor.gank4camp.mvp.persenter.AllPresenter
 import com.donkor.gank4camp.ui.commom.BaseFragment
-import kotlinx.android.synthetic.main.fragment_all.*
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import kotlinx.android.synthetic.main.fragment_common.*
 
 /**
  * 全部
  * Created by Donkor on 2017/12/19.
  */
-class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRefreshListener {
+class AllFragment : BaseFragment(), CommonContract.View , OnRefreshListener, OnLoadmoreListener {
+
     private var mIsRefresh: Boolean = false
+    private var mIsLoadMoreRefresh: Boolean = false
     lateinit private var mPresenter: AllPresenter
     lateinit private var mAdapter: AllAdapter
     private var mList = ArrayList<CommonBean.Result>()
@@ -28,21 +33,24 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
     override fun setData(bean: CommonBean) {
         if (mIsRefresh) {
             mIsRefresh = false
-            refreshLayout.isRefreshing = false
+            smartRefreshLayout.finishRefresh()
             if (mList.size > 0) {
                 mPage = 1
                 mList.clear()
             }
         }
+        if (mIsLoadMoreRefresh) {
+            mIsLoadMoreRefresh = false
+            smartRefreshLayout.finishLoadmore()
+        }
         bean.results.forEach {
             mList.add(it)
         }
-        mAdapter.changeMoreStatus(mAdapter.PULLUP_LOAD_MORE!!)
         mAdapter.notifyDataSetChanged()
     }
 
     override fun getLayoutResources(): Int {
-        return R.layout.fragment_all
+        return R.layout.fragment_common
     }
 
     override fun initView() {
@@ -51,38 +59,27 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
         recyclerView.layoutManager = LinearLayoutManager(context)
         mAdapter = AllAdapter(context, mList)
         recyclerView.adapter = mAdapter
-        refreshLayout.setOnRefreshListener(this)
-        //下拉刷新进度条颜色
-        refreshLayout.setColorSchemeColors(Color.rgb(79, 148, 205))
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            var lastVisibleItem: Int? = 0
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem == mList.size - 1) {
-                    mAdapter.changeMoreStatus(mAdapter.LOAD_MORE!!)
-                    mPage = mPage!! + 1
-                    mPresenter.moreData(mCount, mPage.toString())
-                }
-            }
 
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView?.layoutManager as LinearLayoutManager
-                //最后一个可见的ITEM
-                lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-            }
-        })
+        smartRefreshLayout.setOnRefreshListener(this)
+        smartRefreshLayout.setOnLoadmoreListener(this)
     }
 
-    override fun onRefresh() {
+    override fun onRefresh(refreshLayout: RefreshLayout?) {
         if (!mIsRefresh) {
             mIsRefresh = true
             mPresenter.start()
         }
     }
 
+    override fun onLoadmore(refreshLayout: RefreshLayout?) {
+        if (!mIsLoadMoreRefresh) {
+            mIsLoadMoreRefresh = true
+            mPage = mPage!! + 1
+            mPresenter.moreData(mCount, mPage.toString())
+        }
+    }
+
     override fun loadData() {
-//        Log.e("asd", "size : " + mList.size)
         if (mList.size == 0)
             mPresenter.start()
     }
