@@ -1,6 +1,5 @@
 package com.donkor.gank4camp.ui
 
-import android.annotation.SuppressLint
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -19,24 +18,24 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
  * 主页面
  * Created by donkor on 2017/12/18.
  */
-private val TAG: String? = "MainActivity"
+//private val TAG: String? = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
-    private var allFragment: AllFragment? = null
-    private var androidFragment: AndroidFragment? = null
-    private var iosFragment: IosFragment? = null
-    private var videoFragment: VideoFragment? = null
-    private var appFragment: AppFragment? = null
-    private var expandFragment: ExpandFragment? = null
-    private var jsFragment: JsFragment? = null
-    private var otherFragment: OtherFragment? = null
-    private var girlFragment: GirlFragment? = null
+    lateinit private var allFragment: AllFragment
+    lateinit private var androidFragment: AndroidFragment
+    lateinit private var iosFragment: IosFragment
+    lateinit private var videoFragment: VideoFragment
+    lateinit private var appFragment: AppFragment
+    lateinit private var expandFragment: ExpandFragment
+    lateinit private var jsFragment: JsFragment
+    lateinit private var otherFragment: OtherFragment
+    lateinit private var girlFragment: GirlFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        val view:View=findViewById<View>(R.id.view_status) as View
+        val view: View = findViewById<View>(R.id.view_status) as View
 
         ImmersionBar.with(this).statusBarView(view).init()
 

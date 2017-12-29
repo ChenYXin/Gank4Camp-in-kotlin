@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.fragment_all.*
  */
 class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRefreshListener {
     private var mIsRefresh: Boolean = false
-    private var mPresenter: AllPresenter? = null
-    private var mAdapter: AllAdapter? = null
+    lateinit private var mPresenter: AllPresenter
+    lateinit private var mAdapter: AllAdapter
     private var mList = ArrayList<CommonBean.Result>()
     private val mCount: String? = "10"
     private var mPage: Int? = 1
@@ -37,8 +37,8 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
         bean.results.forEach {
             mList.add(it)
         }
-        mAdapter?.changeMoreStatus(mAdapter?.PULLUP_LOAD_MORE!!)
-        mAdapter?.notifyDataSetChanged()
+        mAdapter.changeMoreStatus(mAdapter.PULLUP_LOAD_MORE!!)
+        mAdapter.notifyDataSetChanged()
     }
 
     override fun getLayoutResources(): Int {
@@ -47,7 +47,7 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
 
     override fun initView() {
         mPresenter = AllPresenter(context, this)
-        mPresenter?.start()
+        mPresenter.start()
         recyclerView.layoutManager = LinearLayoutManager(context)
         mAdapter = AllAdapter(context, mList)
         recyclerView.adapter = mAdapter
@@ -59,9 +59,9 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem == mList.size - 1) {
-                    mAdapter?.changeMoreStatus(mAdapter?.LOAD_MORE!!)
+                    mAdapter.changeMoreStatus(mAdapter.LOAD_MORE!!)
                     mPage = mPage!! + 1
-                    mPresenter?.moreData(mCount, mPage.toString())
+                    mPresenter.moreData(mCount, mPage.toString())
                 }
             }
 
@@ -77,14 +77,14 @@ class AllFragment : BaseFragment(), CommonContract.View, SwipeRefreshLayout.OnRe
     override fun onRefresh() {
         if (!mIsRefresh) {
             mIsRefresh = true
-            mPresenter?.start()
+            mPresenter.start()
         }
     }
 
     override fun loadData() {
 //        Log.e("asd", "size : " + mList.size)
         if (mList.size == 0)
-            mPresenter?.start()
+            mPresenter.start()
     }
 }
 

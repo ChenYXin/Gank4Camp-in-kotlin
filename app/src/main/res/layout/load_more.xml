@@ -11,6 +11,7 @@
     <ProgressBar
         android:id="@+id/pb_load"
         android:layout_width="25dp"
+        android:indeterminateDrawable="@drawable/progressbar_color"
         android:layout_height="25dp"
         android:indeterminate="false" />
 
@@ -19,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:text="加载更多"
+        android:text="加载更多..."
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 

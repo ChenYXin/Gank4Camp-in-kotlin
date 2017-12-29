@@ -8,6 +8,7 @@
     <color name="translucent">#00000000</color>
     <!-- 蓝色 -->
     <color name="blue">#4F94CD</color>
+    <color name="centerBlue">#6F94CD</color>
     <!-- 灰色 -->
     <color name="gray">#848383</color>
     <!-- 红色 -->

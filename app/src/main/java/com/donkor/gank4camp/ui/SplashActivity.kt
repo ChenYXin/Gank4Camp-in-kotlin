@@ -20,7 +20,7 @@ import java.lang.ref.WeakReference
  * 启动页
  */
 private val SWITCH_MAINACTIVITY = 1000//跳转到主界面
-private val TAG: String? = "SplashActivity"
+//private val TAG: String? = "SplashActivity"
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

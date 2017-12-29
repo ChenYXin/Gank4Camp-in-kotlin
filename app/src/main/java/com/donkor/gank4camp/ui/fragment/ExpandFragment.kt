@@ -20,8 +20,8 @@ import kotlinx.android.synthetic.main.fragment_common.*
 class ExpandFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     private var mIsRefresh: Boolean = false
-    private var mPresenter: ExpandPresenter? = null
-    private var mAdapter: CommonAdapter? = null
+    lateinit private var mPresenter: ExpandPresenter
+    lateinit private var mAdapter: CommonAdapter
     private var mList = ArrayList<CommonBean.Result>()
     private val mCount: String? = "10"
     private var mPage: Int? = 1
@@ -38,8 +38,8 @@ class ExpandFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.
         bean.results.forEach {
             mList.add(it)
         }
-        mAdapter?.changeMoreStatus(mAdapter?.PULLUP_LOAD_MORE!!)
-        mAdapter?.notifyDataSetChanged()
+        mAdapter.changeMoreStatus(mAdapter.PULLUP_LOAD_MORE!!)
+        mAdapter.notifyDataSetChanged()
     }
 
     override fun loadData() {
@@ -47,7 +47,7 @@ class ExpandFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.
         //如果数据不需要每次都刷新，可以先判断数据是否存在
         //数据不存在 -> 进行网络请求    数据存在 -> 什么都不做
         if(mList.size==0)
-            mPresenter?.start()
+            mPresenter.start()
     }
 
     override fun getLayoutResources(): Int {
@@ -57,7 +57,7 @@ class ExpandFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.
     override fun onRefresh() {
         if (!mIsRefresh) {
             mIsRefresh = true
-            mPresenter?.start()
+            mPresenter.start()
         }
     }
 
@@ -74,9 +74,9 @@ class ExpandFragment : BaseFragment() , CommonContract.View, SwipeRefreshLayout.
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItem == mList.size - 1) {
-                    mAdapter?.changeMoreStatus(mAdapter?.LOAD_MORE!!)
+                    mAdapter.changeMoreStatus(mAdapter.LOAD_MORE!!)
                     mPage = mPage!! + 1
-                    mPresenter?.moreData(mCount, mPage.toString())
+                    mPresenter.moreData(mCount, mPage.toString())
                 }
             }
 

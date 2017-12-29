@@ -79,8 +79,8 @@ class CommonAdapter(context: Context, list: MutableList<CommonBean.Result>?) : R
             }
         } else if (holder is FooterViewHolder) {
             when (mLoadMoreStatus) {
-                PULLUP_LOAD_MORE -> holder.tvLoadText?.text = "上拉加载更多"
-                LOAD_MORE -> holder.tvLoadText?.text = "正在加载更多..."
+                PULLUP_LOAD_MORE -> holder.tvLoadText?.text = "上拉加载更多..."
+                LOAD_MORE -> holder.tvLoadText?.text = "正在加载..."
                 NO_LOAD_MORE -> holder.linLoadLayout?.visibility = View.GONE
             }
         }
