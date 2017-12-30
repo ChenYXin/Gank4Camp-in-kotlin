@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/iv_content_pic"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

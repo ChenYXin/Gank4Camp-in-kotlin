@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.mvp.model.bean.GankBean
 import com.donkor.gank4camp.utils.ImageLoadUtils
+import pl.droidsonroids.gif.GifImageView
 
 /**
  * Created by donkor on 2017/12/20.
@@ -45,6 +46,7 @@ class GankAdapter(context: Context, list: MutableList<GankBean.Result>?) : Recyc
         holder?.tvContent?.movementMethod = LinkMovementMethod.getInstance()
 
         if (null != mList?.get(position)?.images && mList?.get(position)?.images?.size != 0) {
+            holder?.ivContentPic?.visibility = View.VISIBLE
             ImageLoadUtils.display(mContext, holder?.ivContentPic, mList?.get(position)?.images!![0])
         } else {
             holder?.ivContentPic?.visibility = View.GONE
@@ -53,7 +55,7 @@ class GankAdapter(context: Context, list: MutableList<GankBean.Result>?) : Recyc
 
     class CommonHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         var tvContent: TextView? = null
-        var ivContentPic: ImageView? = null
+        var ivContentPic: GifImageView? = null
 
         init {
             tvContent = itemView?.findViewById(R.id.tv_content)

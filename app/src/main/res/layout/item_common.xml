@@ -14,7 +14,7 @@
             android:orientation="horizontal"
             android:layout_margin="5dp">
 
-            <ImageView
+            <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/iv_content_pic"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
