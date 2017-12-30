@@ -10,7 +10,7 @@ import android.view.ViewGroup
  *
  * Created by Donkor on 2017/12/18.
  */
-abstract class BaseFragment : Fragment() {
+abstract class CommonFragment : Fragment(), BaseImpl {
     private var rootView: View? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (rootView == null) {
@@ -31,11 +31,8 @@ abstract class BaseFragment : Fragment() {
         super.onHiddenChanged(hidden)
         if (!hidden)
             loadData()
-
     }
 
-    abstract fun getLayoutResources(): Int
-    abstract fun initView()
     /**
      * 懒加载，当前Fragment显示的时候才进行网络请求
      * 如果数据不需要每次都刷新，可以先判断数据是否存在

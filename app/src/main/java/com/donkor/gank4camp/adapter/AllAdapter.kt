@@ -2,6 +2,7 @@ package com.donkor.gank4camp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -13,15 +14,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.R.id.*
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
+import com.donkor.gank4camp.mvp.model.bean.GankBean
 import com.donkor.gank4camp.utils.ImageLoadUtils
+import pl.droidsonroids.gif.GifImageView
 
 /**
  * Created by donkor on 2017/12/20.
  */
-class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : RecyclerView.Adapter<AllAdapter.CommonHolder>() {
+class AllAdapter(context: Context, list: MutableList<GankBean.Result>?) : RecyclerView.Adapter<AllAdapter.CommonHolder>() {
     private var mContext: Context? = null
-    private var mList: MutableList<CommonBean.Result>? = null
+    private var mList: MutableList<GankBean.Result>? = null
     private var inflater: LayoutInflater? = null
 
     init {
@@ -51,6 +53,7 @@ class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : Recy
                 holder?.llPic?.visibility = View.GONE
                 holder?.tvContent?.visibility = View.VISIBLE
                 holder?.ivContentPic?.visibility = View.VISIBLE
+                holder?.ivContentType?.visibility = View.VISIBLE
 
                 val desc: String? = mList?.get(position)?.desc
                 val url: String? = mList?.get(position)?.url
@@ -60,6 +63,7 @@ class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : Recy
 
                 if (null != mList?.get(position)?.images && mList?.get(position)?.images?.size != 0) {
                     ImageLoadUtils.display(mContext, holder?.ivContentPic, mList?.get(position)?.images!![0])
+//                    holder?.ivContentPic?.setImageURI(Uri.parse(mList?.get(position)?.images!![0]))
                 } else {
                     holder?.ivContentPic?.visibility = View.GONE
                 }
@@ -78,7 +82,7 @@ class AllAdapter(context: Context, list: MutableList<CommonBean.Result>?) : Recy
 
     class CommonHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         var tvContent: TextView? = null
-        var ivContentPic: ImageView? = null
+        var ivContentPic: GifImageView? = null
         var ivContentType: ImageView? = null
         var llPic: LinearLayout? = null
         var ivPic: ImageView? = null

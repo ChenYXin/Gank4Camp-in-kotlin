@@ -1,36 +1,32 @@
-package com.donkor.gank4camp.ui.fragment
+package com.donkor.gank4camp.ui.fragment.gank
 
-import android.graphics.Color
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.adapter.AllAdapter
+import com.donkor.gank4camp.adapter.GankAdapter
 import com.donkor.gank4camp.mvp.contract.CommonContract
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
-import com.donkor.gank4camp.mvp.persenter.AllPresenter
-import com.donkor.gank4camp.ui.commom.BaseFragment
+import com.donkor.gank4camp.mvp.model.bean.GankBean
+import com.donkor.gank4camp.mvp.persenter.ExpandPresenter
+import com.donkor.gank4camp.ui.commom.GankBaseFragment
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
-import kotlinx.android.synthetic.main.fragment_common.*
+import kotlinx.android.synthetic.main.fragment_gank_item.*
 
 /**
- * 全部
- * Created by Donkor on 2017/12/19.
+ *
+ * Created by Donkor on 2017/12/18.
  */
-class AllFragment : BaseFragment(), CommonContract.View , OnRefreshListener, OnLoadmoreListener {
+class ExpandFragment : GankBaseFragment(), CommonContract.View, OnRefreshListener, OnLoadmoreListener {
 
     private var mIsRefresh: Boolean = false
     private var mIsLoadMoreRefresh: Boolean = false
-    lateinit private var mPresenter: AllPresenter
-    lateinit private var mAdapter: AllAdapter
-    private var mList = ArrayList<CommonBean.Result>()
+    lateinit private var mPresenter: ExpandPresenter
+    lateinit private var mAdapter: GankAdapter
+    private var mList = ArrayList<GankBean.Result>()
     private val mCount: String? = "10"
     private var mPage: Int? = 1
 
-
-    override fun setData(bean: CommonBean) {
+    override fun setData(bean: GankBean) {
         if (mIsRefresh) {
             mIsRefresh = false
             smartRefreshLayout.finishRefresh()
@@ -49,15 +45,22 @@ class AllFragment : BaseFragment(), CommonContract.View , OnRefreshListener, OnL
         mAdapter.notifyDataSetChanged()
     }
 
-    override fun getLayoutResources(): Int {
-        return R.layout.fragment_common
+    override fun onFragmentVisibleChange(isVisible: Boolean) {
+        if (isVisible) {
+            if (mList.size == 0)
+                mPresenter.start()
+        }
     }
 
+    override fun getLayoutResources(): Int {
+        return R.layout.fragment_gank_item
+    }
+
+
     override fun initView() {
-        mPresenter = AllPresenter(context, this)
-        mPresenter.start()
+        mPresenter = ExpandPresenter(context, this)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        mAdapter = AllAdapter(context, mList)
+        mAdapter = GankAdapter(context, mList)
         recyclerView.adapter = mAdapter
 
         smartRefreshLayout.setOnRefreshListener(this)
@@ -78,10 +81,4 @@ class AllFragment : BaseFragment(), CommonContract.View , OnRefreshListener, OnL
             mPresenter.moreData(mCount, mPage.toString())
         }
     }
-
-    override fun loadData() {
-        if (mList.size == 0)
-            mPresenter.start()
-    }
 }
-

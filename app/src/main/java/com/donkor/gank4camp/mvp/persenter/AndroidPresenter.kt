@@ -4,7 +4,7 @@ import android.content.Context
 import com.donkor.gank4camp.applySchedulers
 import com.donkor.gank4camp.mvp.contract.CommonContract
 import com.donkor.gank4camp.mvp.model.AndroidModel
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
+import com.donkor.gank4camp.mvp.model.bean.GankBean
 import io.reactivex.Observable
 
 /**
@@ -28,12 +28,12 @@ class AndroidPresenter(context: Context, view: CommonContract.View) : CommonCont
     }
 
     override fun requestData() {
-        val observable: Observable<CommonBean>? = mContext?.let { mModel.loadData(it, "20") }
-        observable?.applySchedulers()?.subscribe { commonBean: CommonBean -> mView?.setData(commonBean) }
+        val observable: Observable<GankBean>? = mContext?.let { mModel.loadData(it, "20") }
+        observable?.applySchedulers()?.subscribe { commonBean: GankBean -> mView?.setData(commonBean) }
     }
 
     fun moreData(count: String?, page: String?) {
-        val observable: Observable<CommonBean>? = mContext?.let { mModel.loadMoreData(it, count, page) }
-        observable?.applySchedulers()?.subscribe { commonBean: CommonBean -> mView?.setData(commonBean) }
+        val observable: Observable<GankBean>? = mContext?.let { mModel.loadMoreData(it, count, page) }
+        observable?.applySchedulers()?.subscribe { commonBean: GankBean -> mView?.setData(commonBean) }
     }
 }
