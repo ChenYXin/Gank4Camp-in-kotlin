@@ -3,7 +3,7 @@ package com.donkor.gank4camp.mvp.model.bean
 /**
  * Created by Donkor on 2017/12/19
  */
-data class CommonBean(
+data class GankBean(
         val error: Boolean, //false
         val results: ArrayList<Result>
 ) {

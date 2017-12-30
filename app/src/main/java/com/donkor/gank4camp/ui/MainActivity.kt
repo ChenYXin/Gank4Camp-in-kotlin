@@ -20,15 +20,8 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
  */
 
 class MainActivity : AppCompatActivity() {
-    lateinit private var allFragment: AllFragment
-    lateinit private var androidFragment: AndroidFragment
-    lateinit private var iosFragment: IosFragment
-    lateinit private var videoFragment: VideoFragment
-    lateinit private var appFragment: AppFragment
-    lateinit private var expandFragment: ExpandFragment
-    lateinit private var jsFragment: JsFragment
-    lateinit private var otherFragment: OtherFragment
-    lateinit private var girlFragment: GirlFragment
+    lateinit private var gankFragment: GankFragment
+    lateinit private var weatherFragment: WeatherFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,65 +52,23 @@ class MainActivity : AppCompatActivity() {
             //异常情况
             val mFragments: List<Fragment> = supportFragmentManager.fragments
             for (item in mFragments) {
-                if (item is AllFragment) {
-                    allFragment = item
+                if (item is GankFragment) {
+                    gankFragment = item
                 }
-                if (item is AndroidFragment) {
-                    androidFragment = item
-                }
-                if (item is IosFragment) {
-                    iosFragment = item
-                }
-                if (item is VideoFragment) {
-                    videoFragment = item
-                }
-                if (item is AppFragment) {
-                    appFragment = item
-                }
-                if (item is ExpandFragment) {
-                    expandFragment = item
-                }
-                if (item is JsFragment) {
-                    jsFragment = item
-                }
-                if (item is OtherFragment) {
-                    otherFragment = item
-                }
-                if (item is GirlFragment) {
-                    girlFragment = item
+                if (item is WeatherFragment) {
+                    weatherFragment = item
                 }
             }
         } else {
-            allFragment = AllFragment()
-            androidFragment = AndroidFragment()
-            iosFragment = IosFragment()
-            videoFragment = VideoFragment()
-            appFragment = AppFragment()
-            expandFragment = ExpandFragment()
-            jsFragment = JsFragment()
-            girlFragment = GirlFragment()
-            otherFragment = OtherFragment()
+            gankFragment = GankFragment()
+            weatherFragment = WeatherFragment()
             val fragmentTrans = supportFragmentManager.beginTransaction()
-            fragmentTrans.add(R.id.fl_content, allFragment)
-            fragmentTrans.add(R.id.fl_content, androidFragment)
-            fragmentTrans.add(R.id.fl_content, iosFragment)
-            fragmentTrans.add(R.id.fl_content, videoFragment)
-            fragmentTrans.add(R.id.fl_content, appFragment)
-            fragmentTrans.add(R.id.fl_content, expandFragment)
-            fragmentTrans.add(R.id.fl_content, jsFragment)
-            fragmentTrans.add(R.id.fl_content, otherFragment)
-            fragmentTrans.add(R.id.fl_content, girlFragment)
+            fragmentTrans.add(R.id.fl_content, gankFragment)
+            fragmentTrans.add(R.id.fl_content, weatherFragment)
             fragmentTrans.commit()
         }
-        supportFragmentManager.beginTransaction().show(allFragment)
-                .hide(androidFragment)
-                .hide(iosFragment)
-                .hide(videoFragment)
-                .hide(appFragment)
-                .hide(expandFragment)
-                .hide(jsFragment)
-                .hide(otherFragment)
-                .hide(girlFragment)
+        supportFragmentManager.beginTransaction().show(gankFragment)
+                .hide(weatherFragment)
                 .commit()
     }
 
@@ -143,119 +94,14 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_item_all -> {
                     tv_bar_title.text = "Gank4Camp"
-                    supportFragmentManager.beginTransaction().show(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
+                    supportFragmentManager.beginTransaction().show(gankFragment)
+                            .hide(weatherFragment)
                             .commit()
                 }
-                R.id.nav_item_android -> {
-                    tv_bar_title.text = "Android"
-                    supportFragmentManager.beginTransaction().show(androidFragment)
-                            .hide(allFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_ios -> {
-                    tv_bar_title.text = "IOS"
-                    supportFragmentManager.beginTransaction().show(iosFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_video -> {
-                    tv_bar_title.text = "Video"
-                    supportFragmentManager.beginTransaction().show(videoFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_app -> {
-                    tv_bar_title.text = "App"
-                    supportFragmentManager.beginTransaction().show(appFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_expand -> {
-                    tv_bar_title.text = "Expand"
-                    supportFragmentManager.beginTransaction().show(expandFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_js -> {
-                    tv_bar_title.text = "Js"
-                    supportFragmentManager.beginTransaction().show(jsFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(otherFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_other -> {
-                    tv_bar_title.text = "Other"
-                    supportFragmentManager.beginTransaction().show(otherFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(girlFragment)
-                            .commit()
-                }
-                R.id.nav_item_girl -> {
-                    tv_bar_title.text = "Girl"
-                    supportFragmentManager.beginTransaction().show(girlFragment)
-                            .hide(allFragment)
-                            .hide(androidFragment)
-                            .hide(iosFragment)
-                            .hide(videoFragment)
-                            .hide(appFragment)
-                            .hide(expandFragment)
-                            .hide(jsFragment)
-                            .hide(otherFragment)
+                R.id.nav_item_weather -> {
+                    tv_bar_title.text = "Weather"
+                    supportFragmentManager.beginTransaction().show(weatherFragment)
+                            .hide(gankFragment)
                             .commit()
                 }
                 R.id.nav_item_about -> {

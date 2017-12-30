@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
+import com.donkor.gank4camp.mvp.model.bean.GankBean
 import com.donkor.gank4camp.utils.ImageLoadUtils
 
 /**
  * Created by donkor on 2017/12/20.
  */
-class GirlAdapter(context: Context, list: MutableList<CommonBean.Result>?) : RecyclerView.Adapter<GirlAdapter.CommonHolder>() {
+class GirlAdapter(context: Context, list: MutableList<GankBean.Result>?) : RecyclerView.Adapter<GirlAdapter.CommonHolder>() {
     private var mContext: Context? = null
-    private var mList: MutableList<CommonBean.Result>? = null
+    private var mList: MutableList<GankBean.Result>? = null
     private var inflater: LayoutInflater? = null
 
     init {

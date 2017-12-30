@@ -1,7 +1,7 @@
 package com.donkor.gank4camp.mvp.model
 
 import android.content.Context
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
+import com.donkor.gank4camp.mvp.model.bean.GankBean
 import com.donkor.gank4camp.network.ApiService
 import com.donkor.gank4camp.network.RetrofitClient
 import io.reactivex.Observable
@@ -18,11 +18,11 @@ class AndroidModel {
         return retrofitClient?.create(ApiService::class.java)
     }
 
-    fun loadData(context: Context?, count: String?): Observable<CommonBean>? {
+    fun loadData(context: Context?, count: String?): Observable<GankBean>? {
         return getApiService(context)?.getData(type, count)
     }
 
-    fun loadMoreData(context: Context, count: String?, page: String?): Observable<CommonBean>? {
+    fun loadMoreData(context: Context, count: String?, page: String?): Observable<GankBean>? {
         return getApiService(context)?.getMoreData(type, count, page)
     }
 }

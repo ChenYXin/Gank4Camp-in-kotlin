@@ -1,32 +1,32 @@
-package com.donkor.gank4camp.ui.fragment
+package com.donkor.gank4camp.ui.fragment.gank
 
 import android.support.v7.widget.LinearLayoutManager
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.adapter.CommonAdapter
+import com.donkor.gank4camp.adapter.GankAdapter
 import com.donkor.gank4camp.mvp.contract.CommonContract
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
-import com.donkor.gank4camp.mvp.persenter.AppPresenter
-import com.donkor.gank4camp.ui.commom.BaseFragment
+import com.donkor.gank4camp.mvp.model.bean.GankBean
+import com.donkor.gank4camp.mvp.persenter.IosPresenter
+import com.donkor.gank4camp.ui.commom.GankBaseFragment
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
-import kotlinx.android.synthetic.main.fragment_common.*
+import kotlinx.android.synthetic.main.fragment_gank_item.*
 
 /**
  *
  * Created by Donkor on 2017/12/18.
  */
-class AppFragment : BaseFragment(), CommonContract.View , OnRefreshListener, OnLoadmoreListener {
+class IosFragment : GankBaseFragment(), CommonContract.View, OnRefreshListener, OnLoadmoreListener {
 
     private var mIsRefresh: Boolean = false
     private var mIsLoadMoreRefresh: Boolean = false
-    lateinit private var mPresenter: AppPresenter
-    lateinit private var mAdapter: CommonAdapter
-    private var mList = ArrayList<CommonBean.Result>()
+    lateinit private var mPresenter: IosPresenter
+    lateinit private var mAdapter: GankAdapter
+    private var mList = ArrayList<GankBean.Result>()
     private val mCount: String? = "10"
     private var mPage: Int? = 1
 
-    override fun setData(bean: CommonBean) {
+    override fun setData(bean: GankBean) {
         if (mIsRefresh) {
             mIsRefresh = false
             smartRefreshLayout.finishRefresh()
@@ -45,22 +45,21 @@ class AppFragment : BaseFragment(), CommonContract.View , OnRefreshListener, OnL
         mAdapter.notifyDataSetChanged()
     }
 
-    override fun loadData() {
-        //懒加载，当前Fragment显示的时候才进行网络请求
-        //如果数据不需要每次都刷新，可以先判断数据是否存在
-        //数据不存在 -> 进行网络请求    数据存在 -> 什么都不做
-        if (mList.size == 0)
-            mPresenter.start()
+    override fun onFragmentVisibleChange(isVisible: Boolean) {
+        if (isVisible) {
+            if (mList.size == 0)
+                mPresenter.start()
+        }
     }
 
     override fun getLayoutResources(): Int {
-        return R.layout.fragment_common
+        return R.layout.fragment_gank_item
     }
 
     override fun initView() {
-        mPresenter = AppPresenter(context, this)
+        mPresenter = IosPresenter(context, this)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        mAdapter = CommonAdapter(context, mList)
+        mAdapter = GankAdapter(context, mList)
         recyclerView.adapter = mAdapter
 
         smartRefreshLayout.setOnRefreshListener(this)

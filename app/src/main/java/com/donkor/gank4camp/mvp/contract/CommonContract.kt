@@ -2,7 +2,7 @@ package com.donkor.gank4camp.mvp.contract
 
 import com.donkor.gank4camp.base.BasePresenter
 import com.donkor.gank4camp.base.BaseView
-import com.donkor.gank4camp.mvp.model.bean.CommonBean
+import com.donkor.gank4camp.mvp.model.bean.GankBean
 
 /**
  *
@@ -10,7 +10,7 @@ import com.donkor.gank4camp.mvp.model.bean.CommonBean
  */
 interface CommonContract {
     interface View : BaseView<Presenter> {
-        fun setData(bean: CommonBean)
+        fun setData(bean: GankBean)
     }
 
     interface Presenter : BasePresenter {
