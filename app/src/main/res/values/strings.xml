@@ -7,4 +7,47 @@
     <!--AboutActivity-->
     <string name="about_activity_back">返回</string>
     <string name="about_activity_title">Gank4Camp-in-Kotlin</string>
+
+    <string name="weather_provider_sign">数据提供 和风天气</string>
+    <string name="car_washing">洗车指数</string>
+    <string name="suggestion_card_sport">运动</string>
+    <string name="suggestion_card_comfort">舒适</string>
+    <string name="suggestion__card_wear">着装</string>
+    <string name="suggestion_card_influenza">感冒</string>
+    <string name="suggestion_card_uv">紫外线</string>
+    <string name="weather_detail_card_feel">体感温度</string>
+    <string name="weather_detail_card_humidity">相对湿度</string>
+    <string name="weather_detail_card_air_press">气压</string>
+    <string name="weather_detail_card_wind_direct">风向</string>
+    <string name="weather_detail_card_wind_level">等级</string>
+    <string name="weather_detail_card_wind_speed">风速</string>
+    <string name="weather_daily_today">今日</string>
+    <string name="weather_daily_day">日间</string>
+    <string name="weather_daily_night">夜间</string>
+    <string name="weather_daily_tomorrow">明日</string>
+    <string name="weather_daily_day_after_tomorrow">后日</string>
+
+    <string name="title_activity_city_weather">城市天气</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_futrue_weather">未来七天</string>
+    <string name="title_activity_about">关于</string>
+    <string name="develop_by_takayamaaren">Develop by TakayamaAren</string>
+    <string name="input_query_city">input query city</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_city">城市</string>
+    <string name="other">Other</string>
+    <string name="nav_about">关于</string>
+    <string name="nav_exit">退出</string>
+    <string name="weather_quality">空气质量</string>
+    <string name="fixed_position">Fixed Position</string>
+    <string name="now">now</string>
+    <string name="aqi">AQI</string>
+    <string name="pm25">PM2.5</string>
+    <string name="pm10">PM10</string>
+    <string name="see_current_seven_days_weather">查看详细七天天气</string>
+    <string name="sunrise">日升</string>
+    <string name="sunset">日落</string>
+    <string name="moonrise">月升</string>
+    <string name="moonset">月落</string>
 </resources>

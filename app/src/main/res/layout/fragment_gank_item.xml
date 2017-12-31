@@ -4,9 +4,9 @@
     android:id="@+id/smartRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:srlAccentColor="@android:color/white"
+    app:srlAccentColor="#444444"
     app:srlEnablePreviewInEditMode="true"
-    app:srlPrimaryColor="#444444">
+    app:srlPrimaryColor="@android:color/white">
 
     <com.scwang.smartrefresh.layout.header.ClassicsHeader
         android:layout_width="match_parent"

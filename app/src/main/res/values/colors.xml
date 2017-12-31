@@ -15,4 +15,6 @@
     <color name="red">#ff0000</color>
     <!-- 米色 -->
     <color name="backcolor">#f0f0f0</color>
+
+    <color name="grey_bg">#EEEEEE</color>
 </resources>

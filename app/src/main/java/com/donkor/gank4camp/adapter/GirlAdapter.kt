@@ -15,7 +15,7 @@ import com.donkor.gank4camp.utils.ImageLoadUtils
 /**
  * Created by donkor on 2017/12/20.
  */
-class GirlAdapter(context: Context, list: MutableList<GankBean.Result>?) : RecyclerView.Adapter<GirlAdapter.CommonHolder>() {
+class GirlAdapter internal constructor(context: Context, list: MutableList<GankBean.Result>?) : RecyclerView.Adapter<GirlAdapter.CommonHolder>() {
     private var mContext: Context? = null
     private var mList: MutableList<GankBean.Result>? = null
     private var inflater: LayoutInflater? = null

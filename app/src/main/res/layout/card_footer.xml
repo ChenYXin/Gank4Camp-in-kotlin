@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginTop="3dp"
+    android:background="@color/grey_bg"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#666"
+        android:textAlignment="center"
+        android:text="@string/weather_provider_sign" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/card_footer_last_update"
+        android:textColor="#666"
+        android:textAlignment="center"
+        android:layout_height="wrap_content" />
+</LinearLayout>

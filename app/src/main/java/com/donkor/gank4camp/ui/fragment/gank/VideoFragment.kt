@@ -3,7 +3,7 @@ package com.donkor.gank4camp.ui.fragment.gank
 import android.support.v7.widget.LinearLayoutManager
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.adapter.GankAdapter
-import com.donkor.gank4camp.mvp.contract.CommonContract
+import com.donkor.gank4camp.mvp.contract.GankContract
 import com.donkor.gank4camp.mvp.model.bean.GankBean
 import com.donkor.gank4camp.mvp.persenter.VideoPresenter
 import com.donkor.gank4camp.ui.commom.GankBaseFragment
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_gank_item.*
  *
  * Created by Donkor on 2017/12/18.
  */
-class VideoFragment : GankBaseFragment(), CommonContract.View, OnRefreshListener, OnLoadmoreListener {
+class VideoFragment : GankBaseFragment(), GankContract.View, OnRefreshListener, OnLoadmoreListener {
 
     private var mIsRefresh: Boolean = false
     private var mIsLoadMoreRefresh: Boolean = false

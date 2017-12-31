@@ -10,19 +10,18 @@ import io.reactivex.Observable
  *
  * Created by Donkor on 2017/12/19.
  */
-class OtherModel {
-    private val type:String="瞎推荐"
+class OtherModel : GankBaseModel(){
 
     private fun getApiService(context: Context?): ApiService? {
-        val retrofitClient = context?.let { RetrofitClient.getInstance(it, ApiService.BASE_URL) }
+        val retrofitClient = context?.let { RetrofitClient.getGankInstance(it, ApiService.Gank_BASE_URL) }
         return retrofitClient?.create(ApiService::class.java)
     }
 
-    fun loadData(context: Context?, count: String?): Observable<GankBean>? {
-        return getApiService(context)?.getData(type,count)
+    override fun loadData(context: Context?, count: String?): Observable<GankBean>? {
+        return getApiService(context)?.getGankData(gankTypeOther,count)
     }
 
-    fun loadMoreData(context: Context, count: String?, page: String?): Observable<GankBean>? {
-        return getApiService(context)?.getMoreData(type,count, page)
+    override fun loadMoreData(context: Context, count: String?, page: String?): Observable<GankBean>? {
+        return getApiService(context)?.getGankMoreData(gankTypeOther,count, page)
     }
 }

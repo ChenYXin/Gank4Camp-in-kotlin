@@ -67,8 +67,8 @@ class MainActivity : AppCompatActivity() {
             fragmentTrans.add(R.id.fl_content, weatherFragment)
             fragmentTrans.commit()
         }
-        supportFragmentManager.beginTransaction().show(weatherFragment)
-                .hide(gankFragment)
+        supportFragmentManager.beginTransaction().show(gankFragment)
+                .hide(weatherFragment)
                 .commit()
     }
 

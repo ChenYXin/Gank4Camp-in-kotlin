@@ -8,7 +8,7 @@ import com.donkor.gank4camp.mvp.model.bean.GankBean
  *
  * Created by Donkor on 2017/12/19.
  */
-interface CommonContract {
+interface GankContract {
     interface View : BaseView<Presenter> {
         fun setData(bean: GankBean)
     }

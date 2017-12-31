@@ -21,7 +21,7 @@ import pl.droidsonroids.gif.GifImageView
 /**
  * Created by donkor on 2017/12/20.
  */
-class AllAdapter(context: Context, list: MutableList<GankBean.Result>?) : RecyclerView.Adapter<AllAdapter.CommonHolder>() {
+class AllAdapter internal constructor(context: Context, list: MutableList<GankBean.Result>?) : RecyclerView.Adapter<AllAdapter.CommonHolder>() {
     private var mContext: Context? = null
     private var mList: MutableList<GankBean.Result>? = null
     private var inflater: LayoutInflater? = null

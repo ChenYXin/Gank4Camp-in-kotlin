@@ -6,6 +6,7 @@ import android.util.Log
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.internal.Internal.instance
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -58,17 +59,31 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
     companion object {
         @SuppressLint("StaticFieldLeak")
         @Volatile
-        var instance: RetrofitClient? = null
+        var gankinstance: RetrofitClient? = null
+        @SuppressLint("StaticFieldLeak")
+        @Volatile
+        var weatherinstance: RetrofitClient? = null
 
-        fun getInstance(context: Context, baseUrl: String): RetrofitClient {
-            if (instance == null) {
+        fun getGankInstance(context: Context, baseUrl: String): RetrofitClient {
+            if (gankinstance == null) {
                 synchronized(RetrofitClient::class) {
-                    if (instance == null) {
-                        instance = RetrofitClient(context, baseUrl)
+                    if (gankinstance == null) {
+                        gankinstance = RetrofitClient(context, baseUrl)
                     }
                 }
             }
-            return instance!!
+            return gankinstance!!
+        }
+
+        fun getWeatherInstance(context: Context, baseUrl: String): RetrofitClient {
+            if (weatherinstance == null) {
+                synchronized(RetrofitClient::class) {
+                    if (weatherinstance == null) {
+                        weatherinstance = RetrofitClient(context, baseUrl)
+                    }
+                }
+            }
+            return weatherinstance!!
         }
     }
 
