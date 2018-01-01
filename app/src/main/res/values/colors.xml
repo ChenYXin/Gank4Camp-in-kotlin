@@ -17,4 +17,6 @@
     <color name="backcolor">#f0f0f0</color>
 
     <color name="grey_bg">#EEEEEE</color>
+    <!-- 浅白 -->
+    <color name="white_bg">#99ffffff</color>
 </resources>

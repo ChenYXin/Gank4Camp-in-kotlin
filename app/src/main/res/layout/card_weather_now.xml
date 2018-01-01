@@ -1,59 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    app:cardCornerRadius="0dp"
-    android:layout_marginTop="0dp"
-    app:cardElevation="0dp"
-    android:id="@+id/card_now_bg"
-    app:cardBackgroundColor="@color/colorPrimary"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
+    android:gravity="center">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="60dp">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/card_now_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#FFF"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/card_now_now"
+            android:id="@+id/tv_weather_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/now"
-            android:textColor="#FFF"
-            android:textSize="25sp" />
+            android:gravity="center"
+            android:text="深圳"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <ImageView
-                android:id="@+id/card_now_image"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/card_now_temp"
+                android:id="@+id/tv_weather_now_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:textColor="#FFF"
-                android:textSize="50sp" />
+                android:text="29"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/white"
+                android:textSize="70sp" />
 
-        </RelativeLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:text="o"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tv_weather_now_cond_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多云"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_weather_now_cond"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_weather_lifestyle_comf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/icon_weather_lifestyle_comf"
+            android:text="舒适"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_weather_now_hum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/icon_weather_now_hum"
+            android:text="相对湿度"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_weather_now_dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/icon_weather_now_dir"
+            android:text="风向"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>

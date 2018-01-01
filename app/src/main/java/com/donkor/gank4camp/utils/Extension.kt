@@ -1,7 +1,9 @@
 package com.donkor.gank4camp
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.util.TypedValue
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
