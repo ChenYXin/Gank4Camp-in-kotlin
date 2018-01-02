@@ -20,20 +20,12 @@ class WeatherFragment : CommonFragment(), WeatherContract.View, OnRefreshListene
     private var mIsRefresh: Boolean = false
     lateinit private var mPresenter: WeatherPresenter
     lateinit private var mAdapter: WeatherAdapter
-//    private var mList = ArrayList<WeatherBean.HeWeather>()
 
     override fun setData(bean: WeatherBean) {
         if (mIsRefresh) {
             mIsRefresh = false
             smartRefreshLayout.finishRefresh()
-//            if (mList.size > 0) {
-//                mList.clear()
-//            }
         }
-//        Log.e("WeatherFragment", "bean.heWeather6.size : " + bean.HeWeather6.size)
-//        bean.HeWeather6.forEach {
-//            mList.add(it)
-//        }
         mAdapter = WeatherAdapter(context, bean)
         recyclerView.adapter = mAdapter
         mAdapter.notifyDataSetChanged()
@@ -47,12 +39,10 @@ class WeatherFragment : CommonFragment(), WeatherContract.View, OnRefreshListene
         mPresenter = WeatherPresenter(context, this)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-
         smartRefreshLayout.setOnRefreshListener(this)
     }
 
     override fun loadData() {
-//        if (mList.size==0)
             mPresenter.start()
     }
 

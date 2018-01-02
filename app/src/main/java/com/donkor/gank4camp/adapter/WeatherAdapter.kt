@@ -2,17 +2,14 @@ package com.donkor.gank4camp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Typeface
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.donkor.gank4camp.R
-import com.donkor.gank4camp.R.id.tv_bar_title
 import com.donkor.gank4camp.mvp.model.bean.WeatherBean
 import com.donkor.gank4camp.utils.WeatherIconUtil
 import kotlinx.android.synthetic.main.card_footer.view.*
@@ -20,7 +17,6 @@ import kotlinx.android.synthetic.main.card_suggestion.view.*
 import kotlinx.android.synthetic.main.card_weather_detail.view.*
 import kotlinx.android.synthetic.main.card_weather_forecast.view.*
 import kotlinx.android.synthetic.main.card_weather_now.view.*
-import kotlinx.android.synthetic.main.toolbar_layout.*
 
 /**
  * Created by donkor on 2017/12/20.
@@ -38,10 +34,9 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
 
     private enum class Item {
         ITEM_NOW,
-        ITEM_HOURLY,
         ITEM_FORECAST,
         ITEM_DETAIL,
-        //        ITEM_SUGGESTION,
+        ITEM_SUGGESTION,
         ITEM_FOOTER
     }
 
@@ -53,14 +48,12 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
         return when (viewType) {
             Item.ITEM_NOW.ordinal -> NowWeatherViewHolder(
                     inflater.inflate(R.layout.card_weather_now, parent, false))
-            Item.ITEM_HOURLY.ordinal -> HourlyViewHolder(
-                    inflater.inflate(R.layout.card_weather_now_hourly, parent, false))
             Item.ITEM_FORECAST.ordinal -> WeatherForecastViewHolder(
                     inflater.inflate(R.layout.card_weather_forecast, parent, false))
             Item.ITEM_DETAIL.ordinal -> DetailViewHolder(
                     inflater.inflate(R.layout.card_weather_detail, parent, false))
-//            Item.ITEM_SUGGESTION.ordinal -> SuggestionViewHolder(
-//                    inflater.inflate(R.layout.card_suggestion, parent, false))
+            Item.ITEM_SUGGESTION.ordinal -> SuggestionViewHolder(
+                    inflater.inflate(R.layout.card_suggestion, parent, false))
             Item.ITEM_FOOTER.ordinal -> FooterViewHolder(
                     inflater.inflate(R.layout.card_footer, parent, false))
             else -> null
@@ -74,7 +67,6 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
         when (holder) {
             is NowWeatherViewHolder -> {
                 itemView.tv_weather_location.text = "${weather.basic.location} 市"
-                itemView.tv_weather_now_temp.typeface = Typeface.createFromAsset(mContext?.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
                 itemView.tv_weather_now_temp.text = weather.now.tmp
                 itemView.tv_weather_now_cond_txt.text = weather.now.cond_txt
                 itemView.tv_weather_lifestyle_comf.text = weather.lifestyle[0].brf
@@ -85,12 +77,6 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
                             it
                     )
                 })
-            }
-            is HourlyViewHolder -> {
-//                val titles= arrayOf("早餐前", "早餐后", "午餐前", "午餐后", "晚餐前", "晚餐后", "睡前")
-//                val pics= arrayOf(R.mipmap.icon_about,R.mipmap.icon_about,R.mipmap.icon_about,
-//                        R.mipmap.icon_about,R.mipmap.icon_about,R.mipmap.icon_about,R.mipmap.icon_about)
-//                myScrollChooseView
             }
             is WeatherForecastViewHolder -> {
                 for (i in 0..2) {
@@ -117,10 +103,6 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
                                     iconUtil.nightIcon[Integer.parseInt(weather.daily_forecast[i].cond_code_n.trim { it <= ' ' })]!!
                             ))
                 }
-
-//            holder.itemView.card_daily_weather_more.onClick {
-//                activity.startActivity<FutureWeatherActivity>("Data" to weather)
-//            }
             }
             is DetailViewHolder -> {
                 itemView.card_detail_feel.text = "${weather.now.fl}°"
@@ -130,14 +112,31 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
                 itemView.card_detail_wind_dir!!.text = weather.now.wind_dir
                 itemView.card_detail_wind_level.text = "${weather.now.wind_sc}级"
             }
-//            is SuggestionViewHolder -> {
-//                itemView.card_suggest_cold.text = weather.suggestion.flu.txt
-//                itemView.card_suggest_conf.text = weather.suggestion.comf.txt
-//                itemView.card_suggest_cw.text = weather.suggestion.cw.txt
-//                itemView.card_suggest_wear.text = weather.suggestion.drsg.txt
-//                itemView.card_suggest_sport.text = weather.suggestion.sport.txt
-//                itemView.card_suggest_uv.text = weather.suggestion.uv.txt
-//            }
+            is SuggestionViewHolder -> {
+                itemView.card_suggest_conf.text = weather.lifestyle[0].brf
+                itemView.card_suggest_conf_txt.text = weather.lifestyle[0].txt
+
+                itemView.card_suggest_wear.text = weather.lifestyle[1].brf
+                itemView.card_suggest_wear_txt.text = weather.lifestyle[1].txt
+
+                itemView.card_suggest_cold.text = weather.lifestyle[2].brf
+                itemView.card_suggest_cold_txt.text = weather.lifestyle[2].txt
+
+                itemView.card_suggest_sport.text = weather.lifestyle[3].brf
+                itemView.card_suggest_sport_txt.text = weather.lifestyle[3].txt
+
+                itemView.card_suggest_trav.text = weather.lifestyle[4].brf
+                itemView.card_suggest_trav_txt.text = weather.lifestyle[4].txt
+
+                itemView.card_suggest_uv.text = weather.lifestyle[5].brf
+                itemView.card_suggest_uv_txt.text = weather.lifestyle[5].txt
+
+                itemView.card_suggest_cw.text = weather.lifestyle[6].brf
+                itemView.card_suggest_cw_txt.text = weather.lifestyle[6].txt
+
+                itemView.card_suggest_air.text = weather.lifestyle[7].brf
+                itemView.card_suggest_air_txt.text = weather.lifestyle[7].txt
+            }
             is FooterViewHolder -> {
                 itemView.card_footer_last_update.text = "最后更新:  ${weather.update.loc}"
             }
@@ -147,9 +146,9 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
     override fun getItemViewType(position: Int): Int {
         return when (position) {
             0 -> Item.ITEM_NOW.ordinal
-            1 -> Item.ITEM_HOURLY.ordinal
-            2 -> Item.ITEM_FORECAST.ordinal
-            3 -> Item.ITEM_DETAIL.ordinal
+            1 -> Item.ITEM_FORECAST.ordinal
+            2 -> Item.ITEM_DETAIL.ordinal
+            3 -> Item.ITEM_SUGGESTION.ordinal
             4 -> Item.ITEM_FOOTER.ordinal
             else -> -1
         }
@@ -158,8 +157,7 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
 
     internal inner class DetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    internal inner class HourlyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
+    internal inner class SuggestionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     internal inner class FooterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

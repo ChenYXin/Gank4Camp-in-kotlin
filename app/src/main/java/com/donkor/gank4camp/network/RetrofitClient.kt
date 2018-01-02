@@ -59,31 +59,31 @@ class RetrofitClient private constructor(context: Context, baseUrl: String) {
     companion object {
         @SuppressLint("StaticFieldLeak")
         @Volatile
-        var gankinstance: RetrofitClient? = null
+        var gankInstance: RetrofitClient? = null
         @SuppressLint("StaticFieldLeak")
         @Volatile
-        var weatherinstance: RetrofitClient? = null
+        var weatherInstance: RetrofitClient? = null
 
         fun getGankInstance(context: Context, baseUrl: String): RetrofitClient {
-            if (gankinstance == null) {
+            if (gankInstance == null) {
                 synchronized(RetrofitClient::class) {
-                    if (gankinstance == null) {
-                        gankinstance = RetrofitClient(context, baseUrl)
+                    if (gankInstance == null) {
+                        gankInstance = RetrofitClient(context, baseUrl)
                     }
                 }
             }
-            return gankinstance!!
+            return gankInstance!!
         }
 
         fun getWeatherInstance(context: Context, baseUrl: String): RetrofitClient {
-            if (weatherinstance == null) {
+            if (weatherInstance == null) {
                 synchronized(RetrofitClient::class) {
-                    if (weatherinstance == null) {
-                        weatherinstance = RetrofitClient(context, baseUrl)
+                    if (weatherInstance == null) {
+                        weatherInstance = RetrofitClient(context, baseUrl)
                     }
                 }
             }
-            return weatherinstance!!
+            return weatherInstance!!
         }
     }
 
