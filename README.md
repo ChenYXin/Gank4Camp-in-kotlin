@@ -8,6 +8,7 @@
 # Features
 - Material Design设计风格
 - Kotlin中MVP模式的基本使用
+- svg的基本使用
 - [Retrofit2.0](https://github.com/square/retrofit)+[OKHttp3](https://github.com/square/okhttp)+[rxJava2](https://github.com/ReactiveX/RxJava)主要用于网络请求
 - [retrofit2-rxJava2-adapter引入rxJava适配器，方便rxJava与retrofit的结合](https://github.com/JakeWharton/retrofit2-rxjava2-adapter)
 - [ImmersionBar4.4以上沉浸式状态栏和沉浸式导航栏管理](https://github.com/gyf-dev/ImmersionBar)
@@ -24,9 +25,15 @@
 v 1.0（2017_12_26）
 - kotlin实现的干货集中营Android客户端基本完成
 
+v 1.2(2018_1_2)
+- 重构代码，添加天气模块
+
 # Thx
 干货集中营中提供的Api
 - http://gank.io
+
+和风天气提供的Api
+- https://www.heweather.com
 
 icon来源
 - [iconfont-阿里巴巴矢量图表库](http://www.iconfont.cn/plus)
@@ -38,7 +45,7 @@ MacBook Pro (13-inch, 2016, Four Thunderbolt 3 Ports)
 
 Android Studio
 
-- gradle 3.0.2
+- gradle 4.1
 - kotlin 1.1.51
 
 # About me

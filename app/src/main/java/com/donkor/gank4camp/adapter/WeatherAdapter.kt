@@ -2,7 +2,6 @@ package com.donkor.gank4camp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.donkor.gank4camp.R
 import com.donkor.gank4camp.mvp.model.bean.WeatherBean
-import com.donkor.gank4camp.utils.WeatherIconUtil
+import com.donkor.gank4camp.utils.ImageLoadUtils
 import kotlinx.android.synthetic.main.card_footer.view.*
 import kotlinx.android.synthetic.main.card_suggestion.view.*
 import kotlinx.android.synthetic.main.card_weather_detail.view.*
@@ -24,12 +23,11 @@ import kotlinx.android.synthetic.main.card_weather_now.view.*
 class WeatherAdapter internal constructor(context: Context, private val weatherBean: WeatherBean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var mContext: Context? = null
     private var inflater: LayoutInflater
-    private val iconUtil: WeatherIconUtil
+    private val weatherUrl:String="https://cdn.heweather.com/cond_icon/"
 
     init {
         mContext = context
         inflater = LayoutInflater.from(context)
-        iconUtil = WeatherIconUtil()
     }
 
     private enum class Item {
@@ -60,6 +58,7 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
         }
     }
 
+
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemView: View = holder.itemView
@@ -72,11 +71,7 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
                 itemView.tv_weather_lifestyle_comf.text = weather.lifestyle[0].brf
                 itemView.tv_weather_now_hum.text = "相对湿度  ${weather.now.hum} %"
                 itemView.tv_weather_now_dir.text = "${weather.now.wind_dir}  ${weather.now.wind_sc}"
-                itemView.iv_weather_now_cond.setImageDrawable(iconUtil.dayIcon[Integer.parseInt(weather.now.cond_code)]?.let {
-                    ContextCompat.getDrawable(mContext,
-                            it
-                    )
-                })
+                ImageLoadUtils.display(mContext,itemView.iv_weather_now_cond,weatherUrl+weather.now.cond_code+".png")
             }
             is WeatherForecastViewHolder -> {
                 for (i in 0..2) {
@@ -92,16 +87,10 @@ class WeatherAdapter internal constructor(context: Context, private val weatherB
                     holder.nightWeatherTextViews[i].text = weather.daily_forecast[i].cond_txt_n
                 }
                 for (i in 0..2) {
-                    holder.dayIconImageViews[i].setImageDrawable(
-                            ContextCompat.getDrawable(mContext,
-                                    iconUtil.dayIcon[Integer.parseInt(weather.daily_forecast[i].cond_code_d.trim { it <= ' ' })]!!
-                            ))
+                    ImageLoadUtils.display(mContext,holder.dayIconImageViews[i],weatherUrl+weather.daily_forecast[i].cond_code_d+".png")
                 }
                 for (i in 0..2) {
-                    holder.nightIconImageViews[i].setImageDrawable(
-                            ContextCompat.getDrawable(mContext,
-                                    iconUtil.nightIcon[Integer.parseInt(weather.daily_forecast[i].cond_code_n.trim { it <= ' ' })]!!
-                            ))
+                    ImageLoadUtils.display(mContext,holder.nightIconImageViews[i],weatherUrl+weather.daily_forecast[i].cond_code_n+".png")
                 }
             }
             is DetailViewHolder -> {

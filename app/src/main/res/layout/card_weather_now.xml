@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -71,7 +72,7 @@
 
         <ImageView
             android:id="@+id/iv_weather_now_cond"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="40dp" />
 
         <TextView
