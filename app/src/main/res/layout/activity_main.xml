@@ -6,16 +6,15 @@
     android:layout_height="match_parent">
 
     <!--主内容-->
-    <include layout="@layout/toolbar_layout"/>
+    <include layout="@layout/toolbar_layout" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity = "start"
+        android:layout_gravity="start"
         app:headerLayout="@layout/head_layout"
         app:itemBackground="?attr/colorPrimary"
-        app:menu="@menu/nv_menu">
-    </android.support.design.widget.NavigationView>
+        app:menu="@menu/nv_menu" />
 
 </android.support.v4.widget.DrawerLayout>
