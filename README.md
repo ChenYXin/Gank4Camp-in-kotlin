@@ -53,12 +53,10 @@ Android Studio
 
 Email ：donkor@yeah.net
 
-csdn_blog: http://blog.csdn.net/donkor_
-
-jianshu_blog: http://www.jianshu.com/u/10f35b1d7e12
+csdn_blog: https://donkor.blog.csdn.net
 
 QQ Group : 537891203
-<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=99f75bb45aa9c94b8c8f23e8cafbd4317da0e1f77f7e8936ed39e78266d1b5b2"><img src="http://img.blog.csdn.net/20160919114825097" alt="Android开发交流群" title="Android开发交流群" border="0"></a>
+
 
 # License
 ```
